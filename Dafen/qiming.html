@@ -1,0 +1,102 @@
+<layout name="layout" />
+<div class="container">
+    <div class="row row-offcanvas row-offcanvas-right">
+        <!--引入左标题栏!-->
+        <include file="Public:left"/>
+
+        <div class="col-xs-12 col-sm-8">
+            <!--移动端专属路径导航 !-->
+            <ol class="breadcrumb visible-xs-block" style="background-color: #96b97d">
+                <li><a class="yfj-a" href="{:U('Index/index')}">首页</a></li>
+                <li><a class="yfj-a" href="{:U('Xingming/qiming')}">在线起名</a></li>
+            </ol>
+
+            <!--小六壬占卜!-->
+            <form class="form-horizontal" method="post" role="form" action="#" name="form">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><span class="glyphicon glyphicon-edit"></span> 在线起名</h3>
+                    </div>
+                    <div class="panel-body">
+                        <p>测试方法：输入您的姓，暂时只支持简体字查询，点击立即起名，并查看测算结果，请自行体会其中的指示。</p>
+                        <hr>
+
+                        <div style="text-align:center;">
+                            <label for="surname">您的姓氏：</label>
+                            <input class="yfj-bazi" type="text" name="surname" id="surname" placeholder="请输入姓氏">
+                            <br>
+                            <br>
+                            <label>性别：</label>
+                            <input type="radio" name="male_type" value="nolimit" id="nolimit" checked>
+                            <label for="nolimit">不限</label>
+                            <input type="radio" name="male_type" value="male" id="male" >
+                            <label for="male">男孩</label>
+                            <input type="radio" name="male_type" value="female" id="female" >
+                            <label for="female">女孩</label>
+                            <br>
+                            <br>
+                            <button type="" onclick="getXing()" class="btn btn-success yfj-btn-success">立即起名</button>
+                        </div>
+
+                        <hr>
+                        <p>什么是在线起名：缘份居在线起名是通过81数理原理对姓名进行起名，帮助大家分析您所使用的姓名对您运势的影响，81数理吉凶是在易学基础上总结提炼而来。</p>
+                    </div>
+                </div>
+            </form>
+
+            <!--简介!-->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><span class="glyphicon glyphicon-list"></span> 数理简介</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-xs-12 col-lg-12">
+                            <p>1.姓名吉凶，乃是与华人智慧息息相关，有河洛图，河洛之数所蕴含的奥妙。通过吉凶之五行，五行与命格之关系，可判断姓名吉凶，姓名吉凶的选择，渗透生活的方方面面，选好的姓名排列或吉利的姓名，对生活多会起到好的作用。</p>
+                            <p>2.运用易学智慧，融合西方姓名灵数，在姓名选择上更具有专业，进行吉凶打分。帮助大家分析所用到的姓名对生活的影响，性格命运的转变，以及事业，爱情全方位的定位。</p>
+                            <p>3.心诚则灵，测算结果仅供参考。</p>
+                        </div><!--/.col-xs-6.col-lg-4-->
+                    </div>
+                </div>
+            </div>
+
+            <!--百家姓大全!-->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><span class="glyphicon glyphicon-list"></span> 百家姓大全</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <volist name="list" id="vo">
+                            <div class="col-xs-1 col-lg-1">
+                                <!--<p> <a style="color: #333333" href="{:U('Xingming/qiming_result',array('id'=>$vo))}">  {$vo} </a> </p>-->
+                                <p> <a style="color: #333333" href="__MODULE__/qiming/{$vo}.html">  {$vo} </a> </p>
+                                <hr>
+                            </div><!--/.col-xs-6.col-lg-4-->
+                        </volist>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--引入广告!-->
+        <include file="Public:advertisement"/>
+
+    </div>
+</div>
+
+
+<script>
+    //左标题栏按钮active加深()
+    $("#xingming_qiming").addClass("active");
+
+    function getXing() {
+        //$("#surname").attr("value",id);
+        var id = document.getElementById("surname").value;
+
+        form.action="__MODULE__/qiming/"+id+'.html';/*js动态改变form表单中的提交地址*/
+        $('form').ajaxSubmit(function (data) {})
+    }
+
+</script>
+

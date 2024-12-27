@@ -1,0 +1,89 @@
+<layout name="layout" />
+<div class="container">
+    <div class="row row-offcanvas row-offcanvas-right">
+        <!--引入左标题栏!-->
+        <include file="Public:left"/>
+
+        <div class="col-xs-12 col-sm-8">
+            <!--移动端专属路径导航 !-->
+            <ol class="breadcrumb visible-xs-block" style="background-color: #96b97d">
+                <li><a class="yfj-a" href="{:U('Index/index')}">首页</a></li>
+                <li><a class="yfj-a" href="{:U('Jixiong/dianhua')}">电话号测吉凶</a></li>
+            </ol>
+
+            <!--小六壬占卜!-->
+            <form class="form-horizontal" method="post" role="form" action="{:U('Jixiong/dianhua_result')}">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><span class="glyphicon glyphicon-edit"></span> 电话号吉凶</h3>
+                    </div>
+                    <div class="panel-body">
+                        <p>测试方法：输入您的电话号码，点击立即测算，并查看测算结果，请自行体会其中的吉凶指示。</p>
+                        <hr>
+
+                        <div style="text-align:center;">
+                            <input class="yfj-jixiong-shuzi" type="text" name="shuzi" placeholder="请输入电话号" required="required">
+                            <br>
+                            <br>
+                            <button type="submit" class="btn btn-success yfj-btn-success">立即测算</button>
+                        </div>
+
+                        <hr>
+                        <p>什么是电话号测吉凶：缘份居电话号测吉凶是通过81数理原理对电话号吉凶进行测试，帮助大家分析您所使用的数字对您运势的影响，81数理吉凶是在易学基础上总结提炼而来。</p>
+                    </div>
+                </div>
+            </form>
+
+            <!--简介!-->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><span class="glyphicon glyphicon-list"></span> 数理简介</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-xs-12 col-lg-12">
+                            <p>1.数字吉凶，乃是与华人智慧息息相关，有河洛图，河洛之数所蕴含的奥妙。通过吉凶之五行，五行与命格之关系，可判断数字吉凶，数字排列也与号码选择有关。数字吉凶的选择，渗透生活的方方面面，QQ号码，手机号，车牌号，选好的数字排列或吉利的数字，对生活多会起到好的作用。</p>
+                            <p>2.运用易学智慧，融合西方幸运数字生命灵数，在数字选择上更具有专业，先进的数字科技，进行吉凶占卜。帮助大家分析所用到的号码，对生活的影响，性格命运的转变，以及事业，爱情全方位的定位。可适用于手机号码的选择，电话号码的选择及门牌号码，车牌号，幸运数字的选择。</p>
+                            <p>3.心诚则灵，测算结果仅供参考。</p>
+                        </div><!--/.col-xs-6.col-lg-4-->
+                    </div>
+                </div>
+            </div>
+
+            <!--占卜大全!-->
+            <div class="panel panel-default">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><span class="glyphicon glyphicon-list"></span> 最新文章
+                            <span class="pull-right">
+                                <a style="color: #333333" href="{:U('Zhuanti/index')}" target="_blank">更多</a>
+                            </span>
+                        </h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-xs-12 col-lg-12">
+                                <ul class="list-group">
+                                    <volist name="new_list" id="vo">
+                                        <a href="{:U('Zhuanti/detail',array('id'=>$vo['doc_id']))}" target="_blank" class="list-group-item">【{$vo.doc_keyword}】 {$vo.doc_title} <span class="pull-right visible-sm-block visible-md-block visible-lg-block"> {$vo.doc_time}</span></a>
+                                    </volist>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--引入广告!-->
+        <include file="Public:advertisement"/>
+
+    </div>
+</div>
+
+
+<script>
+    //左标题栏按钮active加深()
+    $("#jixiong_dianhua").addClass("active")
+</script>
+

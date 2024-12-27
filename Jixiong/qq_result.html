@@ -1,0 +1,92 @@
+<layout name="layout" />
+<div class="container">
+    <div class="row row-offcanvas row-offcanvas-right">
+        <!--引入左标题栏!-->
+        <include file="Public:left"/>
+
+        <div class="col-xs-12 col-sm-8">
+            <!--移动端专属路径导航 !-->
+            <ol class="breadcrumb visible-xs-block" style="background-color: #96b97d">
+                <li><a class="yfj-a" href="{:U('Index/index')}">首页</a></li>
+                <li><a class="yfj-a" href="{:U('Jixiong/qq')}">QQ号测吉凶</a></li>
+            </ol>
+
+            <!--测算结果!-->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><span class="glyphicon glyphicon-eye-open"></span> QQ号测算结果</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <!--资料!-->
+                        <div class="col-xs-12 col-lg-12">
+                            <div class="panel panel-default">
+                                <!-- Default panel contents -->
+                                <div class="panel-heading"><strong>基本信息</strong></div>
+                                <div class="panel-body">
+                                    <img class="pull-right" src="__PUBLIC__/img/bagua.png" style="width:7em">
+                                    <p><strong>您输入的QQ号： </strong><font style="color: red">{$list.data}</font></p>
+                                    <p><strong>吉凶：</strong>{$list.xiongji}</p>
+                                    <p><strong>数理：</strong>第{$list.shuli}数</p>
+                                    <p><strong>签语：</strong>{$list.desc}</p>
+                                </div>
+                            </div>
+
+                            <div style="text-align:center;">
+                                <a class="btn btn-danger yfj-btn-success" href="{:U('Jixiong/qq')}">返回重测</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--简介!-->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><span class="glyphicon glyphicon-list"></span> 测算告诫</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-xs-12 col-lg-12">
+                            <p>1.测算结果若是理想，固然是一件可喜可贺的事情，如果测算结果不理想，缘主也不必灰心。缘主的命运，即便算得再准，也还是需要缘主自己去把握。算命的目的是为了趋吉避凶，顺势而行。
+                            <p>2.正所谓一命二运三风水，四积阴德五读书，六名七相八敬神，九交贵人十修身。平时积善行德，心存善念，必有善行，善念善行，天必佑之。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--其他展示!-->
+            <div class="panel panel-default">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><span class="glyphicon glyphicon-list"></span> 最新文章
+                            <span class="pull-right">
+                                <a style="color: #333333" href="{:U('Zhuanti/index')}" target="_blank">更多</a>
+                            </span>
+                        </h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-xs-12 col-lg-12">
+                                <ul class="list-group">
+                                    <volist name="new_list" id="vo">
+                                        <a href="{:U('Zhuanti/detail',array('id'=>$vo['doc_id']))}" target="_blank" class="list-group-item">【{$vo.doc_keyword}】 {$vo.doc_title} <span class="pull-right visible-sm-block visible-md-block visible-lg-block"> {$vo.doc_time}</span></a>
+                                    </volist>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--引入广告!-->
+        <include file="Public:advertisement"/>
+
+    </div>
+</div>
+
+<script>
+    //左标题栏按钮active加深()
+    $("#jixiong_qq").addClass("active")
+</script>

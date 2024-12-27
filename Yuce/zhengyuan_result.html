@@ -1,0 +1,145 @@
+<layout name="layout" />
+<div class="container">
+    <div class="row row-offcanvas row-offcanvas-right">
+        <!--引入左标题栏!-->
+        <include file="Public:left"/>
+
+        <div class="col-xs-12 col-sm-8">
+            <!--移动端专属路径导航 !-->
+            <ol class="breadcrumb visible-xs-block" style="background-color: #96b97d">
+                <li><a class="yfj-a" href="{:U('Index/index')}">首页</a></li>
+                <li><a class="yfj-a" href="{:U('Yuce/zhengyuan')}">正缘画像</a></li>
+            </ol>
+
+            <!--八字精算结果!-->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><span class="glyphicon glyphicon-eye-open"></span> 正缘画像预测结果</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <!--缘主资料!-->
+                        <div class="col-xs-12 col-lg-12">
+                            <div class="panel panel-default">
+                                <!-- Default panel contents -->
+                                <div class="panel-heading"><strong>基本信息</strong></div>
+                                <div class="panel-body">
+                                    <p><strong>缘主姓名：</strong>{$list.base_info.name} </p>
+                                    <p><strong>出生公历：</strong>{$list.base_info.gongli}</p>
+                                    <p><strong>出生农历：</strong>{$list.base_info.nongli}</p>
+                                </div>
+
+                                <div class="panel-heading"><strong>真爱画像</strong></div>
+                                <div class="panel-body">
+                                    <strong>五官分析：</strong>
+                                    <img class="pull-right" src="{$list.zhengyuan_info.huaxiang.profile_image}" style="width:10em">
+                                    <br>
+                                    <br>
+                                    <p>脸型：{$list.zhengyuan_info.huaxiang.face_shape}</p>
+                                    <p>眉毛：{$list.zhengyuan_info.huaxiang.eyebrow_shape}</p>
+                                    <p>眼睛：{$list.zhengyuan_info.huaxiang.eye_shape}</p>
+                                    <p>嘴巴：{$list.zhengyuan_info.huaxiang.mouth_shape}</p>
+                                    <p>鼻子：{$list.zhengyuan_info.huaxiang.nose_shape}</p>
+                                    <p>身材：{$list.zhengyuan_info.huaxiang.body_shape}</p>
+                                    <p><font color="red">温馨提示：</font><br>
+                                       <font color="blue">1.真爱画像已经经过修饰，五官特征作凸显展示，以美学标准制作，请仅作适当参考。</font><br>
+                                       <font color="blue">2.真爱画像并无科学依据，测算结果供娱乐使用，请勿作人生指导，珍惜每一段缘份。</font>
+                                    </p>
+                                </div>
+                                <div class="panel-heading"><strong>真爱特质</strong></div>
+                                <div class="panel-body">
+                                    <p><font color="red">恋爱性格：</font>{$list.zhengyuan_info.tezhi.romantic_personality}</p>
+                                    <p><font color="red">事业财富：</font>{$list.zhengyuan_info.tezhi.family_background}</p>
+                                    <p><font color="red">家庭背景：</font>{$list.zhengyuan_info.tezhi.career_wealth}</p>
+                                    <p><font color="red">幸福指数：</font>{$list.zhengyuan_info.tezhi.marital_happiness}</p>
+                                </div>
+                                <div class="panel-heading"><strong>真爱指引</strong></div>
+                                <div class="panel-body">
+                                    <p><font color="red">真爱方位：</font>{$list.zhengyuan_info.zhiyin.love_location}</p>
+                                    <p><font color="red">结识方式：</font>{$list.zhengyuan_info.zhiyin.meeting_method}</p>
+                                    <p><font color="red">相处模式：</font>{$list.zhengyuan_info.zhiyin.interaction_model}</p>
+                                    <p><font color="red">真爱告诫：</font>{$list.zhengyuan_info.zhiyin.love_advice}</p>
+                                </div>
+                                <div class="panel-heading"><strong>真爱运势</strong></div>
+                                <div class="panel-body">
+                                    <p><font color="red">感情运势：</font>{$list.zhengyuan_info.yunshi}</p>
+                                </div>
+                            </div>
+                            <div style="text-align:center;">
+                                <a class="btn btn-danger yfj-btn-success" href="{:U('Yuce/zhengyuan')}">返回重测</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--简介!-->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><span class="glyphicon glyphicon-list"></span> 测算告诫</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-xs-12 col-lg-12">
+                            <p>1.测算结果若是理想，固然是一件可喜可贺的事情，如果测算结果不理想，缘主也不必灰心。缘主的命运，即便算得再准，也还是需要缘主自己去把握。算命的目的是为了趋吉避凶，顺势而行。
+                            <p>2.正所谓一命二运三风水，四积阴德五读书，六名七相八敬神，九交贵人十修身。平时积善行德，心存善念，必有善行，善念善行，天必佑之。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--其他展示!-->
+            <div class="panel panel-default">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><span class="glyphicon glyphicon-list"></span> 最新文章
+                            <span class="pull-right">
+                                <a style="color: #333333" href="{:U('Zhuanti/index')}" target="_blank">更多</a>
+                            </span>
+                        </h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-xs-12 col-lg-12">
+                                <ul class="list-group">
+                                    <volist name="new_list" id="vo">
+                                        <a href="{:U('Zhuanti/detail',array('id'=>$vo['doc_id']))}" target="_blank" class="list-group-item">【{$vo.doc_keyword}】 {$vo.doc_title} <span class="pull-right visible-sm-block visible-md-block visible-lg-block"> {$vo.doc_time}</span></a>
+                                    </volist>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--引入广告!-->
+        <include file="Public:advertisement"/>
+
+    </div>
+</div>
+
+<script>
+    //左标题栏按钮active加深()
+    $("#yuce_zhengyuan").addClass("active")
+
+    //默认公历
+    $(function () {
+        $('#myTab1 a:first').tab('show');
+        $("#calendar1").attr('value','gongli')
+    })
+
+    $('#myTab1 a').click(function (e) {
+        e.preventDefault();
+        $(this).tab('show');
+
+        var p = $(this).attr('href');
+        //console.log(p)
+        if (p=="#gongli1") {
+            $("#calendar1").attr('value','gongli')
+        } else {
+            $("#calendar1").attr('value','nongli')
+        }
+
+    })
+</script>

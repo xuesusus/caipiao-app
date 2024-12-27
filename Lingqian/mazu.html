@@ -1,0 +1,91 @@
+<layout name="layout" />
+<div class="container">
+    <div class="row row-offcanvas row-offcanvas-right">
+        <!--引入左标题栏!-->
+        <include file="Public:left"/>
+
+        <div class="col-xs-12 col-sm-8">
+            <!--移动端专属路径导航 !-->
+            <ol class="breadcrumb visible-xs-block" style="background-color: #96b97d">
+                <li><a class="yfj-a" href="{:U('Index/index')}">首页</a></li>
+                <li><a class="yfj-a" href="{:U('Lingqian/mazu')}">妈祖灵签</a></li>
+            </ol>
+
+            <!--灵签!-->
+            <form class="form-horizontal" method="post" role="form" action="{:U('Lingqian/mazu_result')}">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><span class="glyphicon glyphicon-edit"></span> 妈祖灵签</h3>
+                    </div>
+                    <div class="panel-body">
+                        <p>抽签方法：抽签前双手合十，默念【妈祖圣母指点迷经】三遍，心念集中于你所测之事，如爱情、事业、健康等，然后心念一动，点击立即抽签，并查看签辞，请自行体会其中的吉凶指示。</p>
+                        <hr>
+
+                        <div style="text-align:center;">
+                            <img src="__PUBLIC__/img/lingqian/mazu.png" style="width:15em">
+                            <br>
+                            <br>
+                            <!--<a id="chouqian" href="javascript:;" class="btn btn-success">立即抽签</a>-->
+                            <button type="submit" class="btn btn-success yfj-btn-success">立即抽签</button>
+                        </div>
+                        <hr>
+                        <p>什么是妈祖灵签：妈祖灵签是民间流传的，在妈祖圣母前占卦的一种求签签种，（道法讲究顺其自然，只要诚心，皆可求问各种事情。）妈祖灵签有六十签，签文自古至今流传久远，各地签文略有不同，大同小异，解签的意思差不多。</p>
+                    </div>
+                </div>
+            </form>
+
+            <!--简介!-->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><span class="glyphicon glyphicon-list"></span> 抽签简介</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-xs-12 col-lg-12">
+                            <p>1.妈祖，海神，又名天后圣母，天王母后，盘古长女，夫为三清之一。妈祖神签相传是妈祖的杰作，它可以占卜吉凶祸福，最特别的地方就是妈祖的灵签很灵。很多人慕名而来就是希望能在这上面求取一支灵签。</p>
+                            <p>2.心诚则灵，测算结果仅供参考。</p>
+                        </div><!--/.col-xs-6.col-lg-4-->
+                    </div>
+                </div>
+            </div>
+
+            <!--灵签大全!-->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><span class="glyphicon glyphicon-list"></span> 妈祖灵签大全</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <volist name="list" id="vo">
+                            <div class="col-xs-6 col-lg-4">
+                                <p> <a style="color: #333333" href="{:U('Lingqian/mazu_result',array('id'=>$vo['id']))}"> 妈祖灵签第 {$vo.id} 签 </a> </p>
+                            </div><!--/.col-xs-6.col-lg-4-->
+                        </volist>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--引入广告!-->
+        <include file="Public:advertisement"/>
+
+    </div>
+</div>
+
+
+<script>
+    //左标题栏按钮active加深()
+    $("#lingqian_mazu").addClass("active")
+
+//    $("#chouqian").show();//立即抽签
+//    $("#qianci").hide();//查看签辞
+//
+//    $("#chouqian").click(function() {
+//        $("#chouqian").hide();//立即抽签
+//        $("#qianci").show();//查看签辞
+//    });
+
+</script>
+
+
+

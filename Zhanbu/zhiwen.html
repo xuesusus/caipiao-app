@@ -1,0 +1,149 @@
+<layout name="layout" />
+<div class="container">
+    <div class="row row-offcanvas row-offcanvas-right">
+        <!--引入左标题栏!-->
+        <include file="Public:left"/>
+
+        <div class="col-xs-12 col-sm-8">
+            <!--移动端专属路径导航 !-->
+            <ol class="breadcrumb visible-xs-block" style="background-color: #96b97d">
+                <li><a class="yfj-a" href="{:U('Index/index')}">首页</a></li>
+                <li><a class="yfj-a" href="{:U('Zhanbu/zhiwen')}">指纹占卜</a></li>
+            </ol>
+
+            <!--小六壬占卜!-->
+            <form class="form-horizontal" method="post" role="form" action="{:U('Zhanbu/zhiwen_result')}">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><span class="glyphicon glyphicon-edit"></span> 指纹占卜</h3>
+                    </div>
+                    <div class="panel-body">
+                        <p>占卜方法：根据图示选择自己的手指指纹，男性测试左手，女性测试右手。选择好后点击立即测算，并查看测算结果，请自行体会其中的吉凶指示。</p>
+                        <hr>
+
+                        <div style="text-align:center;">
+                            <img src="__PUBLIC__/img/zhiwen.gif" style="width:10em">
+                            <br>
+                            <br>
+
+                            <div class="form-group">
+                                    <label class="radio-inline" style="font-size: 18px">
+                                        拇指：
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio"  class="" value="0" name="muzhi" checked="checked">箩纹
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio"  value="1" name="muzhi">簸箕纹
+                                    </label>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="radio-inline" style="font-size: 18px">
+                                    食指：
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio"  value="0" name="shizhi" checked="checked">箩纹
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio"  value="1" name="shizhi">簸箕纹
+                                </label>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="radio-inline" style="font-size: 18px">
+                                    中指：
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio"  value="0" name="zhongzhi" checked="checked">箩纹
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio"  value="1" name="zhongzhi">簸箕纹
+                                </label>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="radio-inline" style="font-size: 18px">
+                                    无名：
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio"  value="0" name="wumingzhi" checked="checked">箩纹
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio"  value="1" name="wumingzhi">簸箕纹
+                                </label>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="radio-inline" style="font-size: 18px">
+                                    小指：
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio"  value="0" name="xiaozhi" checked="checked">箩纹
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio"  value="1" name="xiaozhi">簸箕纹
+                                </label>
+                            </div>
+
+                            <button type="submit" class="btn btn-success yfj-btn-success">立即测算</button>
+                        </div>
+                        <hr>
+                        <p>什么是指纹占卜：因为世界上绝对找不到两个指纹完全相同的人，虽然我们的身体是由遗传所造成，且随着环境会发生变化，但只有指纹始终不会发生变化。指纹，大致可分为“箩纹”和“簸箕纹”两种。随着形状的不同，其性格和命运也不相同。</p>
+                    </div>
+                </div>
+            </form>
+
+            <!--简介!-->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><span class="glyphicon glyphicon-list"></span> 指纹简介</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-xs-12 col-lg-12">
+                            <p>1.箩纹：大致上为同心圆或螺旋状、旋涡状纹路，形如圆形的竹箩，亦称为斗纹、涡纹。也有双斗纹、蚊香状双线螺旋纹，总之，指纹的外围圈是闭合的，一般归类于斗纹。</p>
+                            <p>2.簸箕纹：外围有开口，如高山流水般的纹路，形如铲状的簸箕，亦称为流纹。开口朝向同一只手小指方向的为正箕纹，反之为反箕纹，一般情况下很少有反箕纹，它属于基因突变的形成。反箕纹和正箕纹所具有的个性也有很大反差。</p>
+                            <p>3.心诚则灵，测算结果仅供参考。</p>
+                        </div><!--/.col-xs-6.col-lg-4-->
+                    </div>
+                </div>
+            </div>
+
+            <!--占卜大全!-->
+            <div class="panel panel-default">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><span class="glyphicon glyphicon-list"></span> 最新文章
+                            <span class="pull-right">
+                                <a style="color: #333333" href="{:U('Zhuanti/index')}" target="_blank">更多</a>
+                            </span>
+                        </h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-xs-12 col-lg-12">
+                                <ul class="list-group">
+                                    <volist name="new_list" id="vo">
+                                        <a href="{:U('Zhuanti/detail',array('id'=>$vo['doc_id']))}" target="_blank" class="list-group-item">【{$vo.doc_keyword}】 {$vo.doc_title} <span class="pull-right visible-sm-block visible-md-block visible-lg-block"> {$vo.doc_time}</span></a>
+                                    </volist>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--引入广告!-->
+        <include file="Public:advertisement"/>
+
+    </div>
+</div>
+
+
+<script>
+    //左标题栏按钮active加深()
+    $("#zhiwen_zhanbu").addClass("active")
+</script>
+

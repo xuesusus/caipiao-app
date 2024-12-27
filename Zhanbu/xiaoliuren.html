@@ -1,0 +1,89 @@
+<layout name="layout" />
+<div class="container">
+    <div class="row row-offcanvas row-offcanvas-right">
+        <!--引入左标题栏!-->
+        <include file="Public:left"/>
+
+        <div class="col-xs-12 col-sm-8">
+            <!--移动端专属路径导航 !-->
+            <ol class="breadcrumb visible-xs-block" style="background-color: #96b97d">
+                <li><a class="yfj-a" href="{:U('Index/index')}">首页</a></li>
+                <li><a class="yfj-a" href="{:U('Zhanbu/xiaoliuren')}">小六壬占卜</a></li>
+            </ol>
+
+            <!--小六壬占卜!-->
+            <form class="form-horizontal" method="post" role="form" action="{:U('Zhanbu/xiaoliuren_result')}">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><span class="glyphicon glyphicon-edit"></span> 小六壬占卜</h3>
+                    </div>
+                    <div class="panel-body">
+                        <p>测试方法：静默一分钟，心念集中于你所测之事，然后随机报数，点击立即测算，并查看测算结果，请自行体会其中的吉凶指示。</p>
+                        <hr>
+
+                        <div style="text-align:center;">
+                            <input class="yfj-jixiong-shuzi" type="text" name="shuzi" placeholder="请输入任意数字" required="required">
+                            <br>
+                            <br>
+                            <button type="submit" class="btn btn-success yfj-btn-success">立即测算</button>
+                        </div>
+
+                        <hr>
+                        <p>什么是小六壬占卜：小六壬民间占卜中的简易算法，以大安、留连、速喜、赤口、小吉、空亡按照一定顺序排列，俗称报时起课法。</p>
+                    </div>
+                </div>
+            </form>
+
+            <!--简介!-->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><span class="glyphicon glyphicon-list"></span> 数理简介</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-xs-12 col-lg-12">
+                            <p>1.小六壬占卜，古代中国占卜法之一，俗称报时起课法，后世亦传有简易随机数起卦法，缘份居小六壬占卜即本于此。</p>
+                            <p>2.不急不占，无事不占，不动不占。</p>
+                            <p>3.心诚则灵，测算结果仅供参考。</p>
+                        </div><!--/.col-xs-6.col-lg-4-->
+                    </div>
+                </div>
+            </div>
+
+            <!--占卜大全!-->
+            <div class="panel panel-default">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><span class="glyphicon glyphicon-list"></span> 最新文章
+                            <span class="pull-right">
+                                <a style="color: #333333" href="{:U('Zhuanti/index')}" target="_blank">更多</a>
+                            </span>
+                        </h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-xs-12 col-lg-12">
+                                <ul class="list-group">
+                                    <volist name="new_list" id="vo">
+                                        <a href="{:U('Zhuanti/detail',array('id'=>$vo['doc_id']))}" target="_blank" class="list-group-item">【{$vo.doc_keyword}】 {$vo.doc_title} <span class="pull-right visible-sm-block visible-md-block visible-lg-block"> {$vo.doc_time}</span></a>
+                                    </volist>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--引入广告!-->
+        <include file="Public:advertisement"/>
+
+    </div>
+</div>
+
+
+<script>
+    //左标题栏按钮active加深()
+    $("#xiaoliuren_zhanbu").addClass("active")
+</script>
+

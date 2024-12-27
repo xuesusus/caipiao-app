@@ -1,0 +1,89 @@
+<layout name="layout" />
+<div class="container">
+    <div class="row row-offcanvas row-offcanvas-right">
+        <!--引入左标题栏!-->
+        <include file="Public:left"/>
+
+        <div class="col-xs-12 col-sm-8">
+            <!--移动端专属路径导航 !-->
+            <ol class="breadcrumb visible-xs-block" style="background-color: #96b97d">
+                <li><a class="yfj-a" href="{:U('Index/index')}">首页</a></li>
+                <li><a class="yfj-a" href="{:U('Peidui/shenfen')}">身份证配对</a></li>
+            </ol>
+
+            <!--身份证配对!-->
+            <form class="form-horizontal" method="post" role="form" action="{:U('Peidui/shenfen_result')}">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><span class="glyphicon glyphicon-edit"></span> 身份证配对</h3>
+                    </div>
+                    <div class="panel-body">
+                        <p>测试方法：输入男方和女方身份证，点击立即配对，并查看配对结果，请自行体会其中的指示。</p>
+                        <hr>
+
+                        <div style="text-align:center;">
+                            <input class="yfj-jixiong-shuzi" type="text" name="male_shuzi" placeholder="请输入男方身份证" required="required">
+                            <input class="yfj-jixiong-shuzi" type="text" name="female_shuzi" placeholder="请输入女方身份证" required="required">
+                            <br>
+                            <br>
+                            <button type="submit" class="btn btn-success yfj-btn-success">立即配对</button>
+                        </div>
+
+                        <hr>
+                        <p>什么是身份证配对：缘份居身份证配对可以测试两人之间的缘份指数，一切都是命中注定的，有注定的身份证就会有注定的姻缘，其原理主要依据统计学和周易五行生克理论。</p>
+                    </div>
+                </div>
+            </form>
+
+            <!--简介!-->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><span class="glyphicon glyphicon-list"></span> 配对简介</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-xs-12 col-lg-12">
+                            <p>1.身份证配对是根据我国传统易学五行生克理论，对男女双方身份证进行分析，了解男女双方缘分指数，从而帮助人们获得美满婚姻的一种方法。</p>
+                            <p>2.心诚则灵，测算结果仅供参考。</p>
+                        </div><!--/.col-xs-6.col-lg-4-->
+                    </div>
+                </div>
+            </div>
+
+            <!--占卜大全!-->
+            <div class="panel panel-default">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><span class="glyphicon glyphicon-list"></span> 最新文章
+                            <span class="pull-right">
+                                <a style="color: #333333" href="{:U('Zhuanti/index')}" target="_blank">更多</a>
+                            </span>
+                        </h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-xs-12 col-lg-12">
+                                <ul class="list-group">
+                                    <volist name="new_list" id="vo">
+                                        <a href="{:U('Zhuanti/detail',array('id'=>$vo['doc_id']))}" target="_blank" class="list-group-item">【{$vo.doc_keyword}】 {$vo.doc_title} <span class="pull-right visible-sm-block visible-md-block visible-lg-block"> {$vo.doc_time}</span></a>
+                                    </volist>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--引入广告!-->
+        <include file="Public:advertisement"/>
+
+    </div>
+</div>
+
+
+<script>
+    //左标题栏按钮active加深()
+    $("#peidui_shenfen").addClass("active")
+</script>
+

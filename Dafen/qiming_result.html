@@ -1,0 +1,64 @@
+<layout name="layout" />
+<div class="container">
+    <div class="row row-offcanvas row-offcanvas-right">
+        <!--引入左标题栏!-->
+        <include file="Public:left"/>
+
+        <div class="col-xs-12 col-sm-8">
+            <!--移动端专属路径导航 !-->
+            <ol class="breadcrumb visible-xs-block" style="background-color: #96b97d">
+                <li><a class="yfj-a" href="{:U('Index/index')}">首页</a></li>
+                <li><a class="yfj-a" href="{:U('Xingming/qiming')}">在线起名</a></li>
+            </ol>
+
+            <!--起名结果!-->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><span class="glyphicon glyphicon-list"></span> 起名结果</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <volist name="list" id="vo">
+                            <div class="col-xs-6 col-lg-3">
+                                <p>
+                                    <!--<a id="{$vo}" href="__MODULE__/dafen/{$vo}.html" class="list-group-item left" target="_blank">{$vo}</a>-->
+                                    <a id="{$vo}" class="list-group-item left" target="_blank">{$vo}</a>
+                                </p>
+                            </div>
+                        </volist>
+                    </div>
+                </div>
+                <div style="text-align: center" class="yfj-pages">
+                    {$page}
+                </div>
+            </div>
+
+            <!--简介!-->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><span class="glyphicon glyphicon-list"></span> 测算简介</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-xs-12 col-lg-12">
+                            <p>1.姓名吉凶，乃是与华人智慧息息相关，有河洛图，河洛之数所蕴含的奥妙。通过吉凶之五行，五行与命格之关系，可判断姓名吉凶，姓名吉凶的选择，渗透生活的方方面面，选好的姓名排列或吉利的姓名，对生活多会起到好的作用。</p>
+                            <p>2.运用易学智慧，融合西方姓名灵数，在姓名选择上更具有专业，进行吉凶打分。帮助大家分析所用到的姓名对生活的影响，性格命运的转变，以及事业，爱情全方位的定位。</p>
+                            <p>3.心诚则灵，测算结果仅供参考。</p>
+                        </div><!--/.col-xs-6.col-lg-4-->
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!--引入广告!-->
+        <include file="Public:advertisement"/>
+    </div>
+</div>
+
+
+<script>
+    //左标题栏按钮active加深()
+    $("#xingming_qiming").addClass("active")
+</script>
+

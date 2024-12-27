@@ -1,0 +1,258 @@
+<layout name="layout"/>
+<div class="container">
+    <div class="row row-offcanvas row-offcanvas-right">
+        <!--引入左标题栏!-->
+        <include file="Public:left"/>
+
+        <div class="col-xs-12 col-sm-8">
+            <!--移动端专属路径导航 !-->
+            <ol class="breadcrumb visible-xs-block" style="background-color: #96b97d">
+                <li><a class="yfj-a" href="{:U('Index/index')}">首页</a></li>
+                <li><a class="yfj-a" href="{:U('Zhuanti/laohuangli')}">老黄历查询</a></li>
+            </ol>
+
+            <!--今日运势!-->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><span class="glyphicon glyphicon-list"></span> 黄历详情</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-xs-12 col-lg-12">
+                            <p class="text-muted" style="text-align:center;font-size: 1.5em">【{$list.yangli}】<br>【{$list.xingqi}】<br>{$list.yinli}<br></p>
+                        </div>
+                        <div class="col-xs-12 col-lg-12">
+                            <p class="text-muted" style="text-align:left;font-size: 1.5em"><font color="red">【宜】&nbsp;&nbsp;&nbsp;</font>【{$list.yi}】</p>
+                        </div>
+                        <div class="col-xs-12 col-lg-12">
+                            <p class="text-muted" style="text-align:left;font-size: 1.5em"><font color="blue">【忌】&nbsp;&nbsp;&nbsp;</font>【{$list.ji}】</p>
+                        </div>
+                        <div class="col-xs-12 col-lg-12">
+                            <p class="text-muted" style="text-align:left;font-size: 1.5em"><font color="#ff4500">【五行】</font>【{$list.wuxing}】</p>
+                        </div>
+                        <div class="col-xs-12 col-lg-12">
+                            <p class="text-muted" style="text-align:left;font-size: 1.5em"><font color="green">【冲煞】</font>【{$list.chongsha}】</p>
+                        </div>
+                        <div class="col-xs-12 col-lg-12">
+                            <p class="text-muted" style="text-align:left;font-size: 1.5em"><font color="#8a2be2">【吉神】</font>【{$list.jishen}】</p>
+                        </div>
+                        <div class="col-xs-12 col-lg-12">
+                            <p class="text-muted" style="text-align:left;font-size: 1.5em"><font>【凶神】</font>【{$list.xiongshen}】</p>
+                        </div>
+                        <div class="col-xs-12 col-lg-12">
+                            <p  class="text-muted" style="text-align:left;font-size: 1.5em"><font color="#6495ed">【百忌】</font>【{$list.baiji}】</p>
+                        </div>
+                        <div class="col-xs-12 col-lg-12">
+                            <p  class="text-muted" style="text-align:left;font-size: 1.5em"><font color="">【贵神方位：{$list.guishenfangwei}】</font></p>
+                        </div>
+                        <div class="col-xs-12 col-lg-12">
+                            <p  class="text-muted" style="text-align:left;font-size: 1.5em"><font color="">【喜神方位：{$list.xishenfangwei}】|【福神方位：{$list.fushenfangwei}】|【财神方位：{$list.caishenfangwei}】</font></p>
+                        </div>
+                        <div class="col-xs-12 col-lg-12">
+                            <p  class="text-muted" style="text-align:left;font-size: 1.5em"><font color="">【节气：{$list.jieqi}】|【本月胎神：{$list.benyuetaishen}】|【今日胎神：{$list.jinritaishen}】</font></p>
+                        </div>
+                        <div class="col-xs-12 col-lg-12">
+                            <p  class="text-muted" style="text-align:left;font-size: 1.5em"><font color="">【值星：{$list.zhixing}】|【六曜：{$list.liuyao}】|【七政：{$list.qizheng}】|【物候：{$list.wuhou}】</font></p>
+                        </div>
+                        <div class="col-xs-12 col-lg-12">
+                            <p  class="text-muted" style="text-align:left;font-size: 1.5em"><font color="">【宫兽：{$list.gongshou}】|【月相：{$list.yuexiang}】|【星宿：{$list.xingxiu}】</font></p>
+                        </div>
+                        <div class="col-xs-12 col-lg-12">
+                            <p  class="text-muted" style="text-align:left;font-size: 1.5em"><font color="">【天神：{$list.tianshen}】|【黄黑道：{$list.huanghei}】|【吉凶：{$list.jixiong}】</font></p>
+                        </div>
+                        <div class="col-xs-12 col-lg-12">
+                            <p  class="text-muted" style="text-align:left;font-size: 1.5em"><font color="#a52a2a">【歌诀】</font>【{$list.xingxiuge}】</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><span class="glyphicon glyphicon-list"></span> 时辰吉凶</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-xs-12 col-lg-12">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <tbody>
+                                    <tr>
+                                        <th>--</th>
+                                        <volist name="list.detail_info" id="vo" key="key">
+                                            <th>
+                                                {$vo.time_shichen}
+                                            </th>
+                                        </volist>
+                                    </tr>
+                                    <tr>
+                                        <th>时刻</th>
+                                        <volist name="list.detail_info" id="vo" key="key">
+                                            <td>
+                                                {$vo.time_region}
+                                            </td>
+                                        </volist>
+                                    </tr>
+                                    <tr>
+                                        <th>时辰</th>
+                                        <volist name="list.detail_info" id="vo" key="key">
+                                            <td>
+                                                {$vo.time_ganzhi}
+                                            </td>
+                                        </volist>
+                                    </tr>
+                                    <tr>
+                                        <th>天神</th>
+                                        <volist name="list.detail_info" id="vo" key="key">
+                                            <td>
+                                                {$vo.time_tianshen}
+                                            </td>
+                                        </volist>
+                                    </tr>
+                                    <tr>
+                                        <th>黄黑道</th>
+                                        <volist name="list.detail_info" id="vo" key="key">
+                                            <td>
+                                                {$vo.time_huanghei}
+                                            </td>
+                                        </volist>
+                                    </tr>
+                                    <tr>
+                                        <th>吉凶</th>
+                                        <volist name="list.detail_info" id="vo" key="key">
+                                            <td>
+                                                {$vo.time_jixiong}
+                                            </td>
+                                        </volist>
+                                    </tr>
+                                    <tr>
+                                        <th>时宜</th>
+                                        <volist name="list.detail_info" id="vo" key="key">
+                                            <td>
+                                                {$vo.time_yi}
+                                            </td>
+                                        </volist>
+                                    </tr>
+                                    <tr>
+                                        <th>时忌</th>
+                                        <volist name="list.detail_info" id="vo" key="key">
+                                            <td>
+                                                {$vo.time_ji}
+                                            </td>
+                                        </volist>
+                                    </tr>
+                                    <tr>
+                                        <th>贵神</th>
+                                        <volist name="list.detail_info" id="vo" key="key">
+                                            <td>
+                                                {$vo.time_guishenfangwei}
+                                            </td>
+                                        </volist>
+                                    </tr>
+                                    <tr>
+                                        <th>喜神</th>
+                                        <volist name="list.detail_info" id="vo" key="key">
+                                            <td>
+                                                {$vo.time_xishenfangwei}
+                                            </td>
+                                        </volist>
+                                    </tr>
+                                    <tr>
+                                        <th>福神</th>
+                                        <volist name="list.detail_info" id="vo" key="key">
+                                            <td>
+                                                {$vo.time_fushenfangwei}
+                                            </td>
+                                        </volist>
+                                    </tr>
+                                    <tr>
+                                        <th>财神</th>
+                                        <volist name="list.detail_info" id="vo" key="key">
+                                            <td>
+                                                {$vo.time_caishenfangwei}
+                                            </td>
+                                        </volist>
+                                    </tr>
+                                    <tr>
+                                        <th>时冲</th>
+                                        <volist name="list.detail_info" id="vo" key="key">
+                                            <td>
+                                                {$vo.time_chong}
+                                            </td>
+                                        </volist>
+                                    </tr>
+                                    <tr>
+                                        <th>时煞</th>
+                                        <volist name="list.detail_info" id="vo" key="key">
+                                            <td>
+                                                {$vo.time_sha}
+                                            </td>
+                                        </volist>
+                                    </tr>
+                                    <tr>
+                                        <th>时旬</th>
+                                        <volist name="list.detail_info" id="vo" key="key">
+                                            <td>
+                                                {$vo.time_xun}
+                                            </td>
+                                        </volist>
+                                    </tr>
+                                    <tr>
+                                        <th>空亡</th>
+                                        <volist name="list.detail_info" id="vo" key="key">
+                                            <td>
+                                                {$vo.time_xunkong}
+                                            </td>
+                                        </volist>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!--其他展示!-->
+            <div class="panel panel-default">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><span class="glyphicon glyphicon-list"></span> 最新文章
+                            <span class="pull-right">
+                                <a style="color: #333333" href="{:U('Zhuanti/index')}" target="_blank">更多</a>
+                            </span>
+                        </h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-xs-12 col-lg-12">
+                                <ul class="list-group">
+                                    <volist name="new_list" id="vo">
+                                        <a href="{:U('Zhuanti/detail',array('id'=>$vo['doc_id']))}" target="_blank" class="list-group-item">【{$vo.doc_keyword}】 {$vo.doc_title} <span class="pull-right visible-sm-block visible-md-block visible-lg-block"> {$vo.doc_time}</span></a>
+                                    </volist>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--引入广告!-->
+        <include file="Public:advertisement"/>
+    </div>
+</div>
+
+<script>
+    //左标题栏按钮active加深()
+    $("#zhuanti_laohuangli").addClass("active")
+</script>
+
+
+<style>
+    .table-responsive {
+        max-width: 100%; /* 设置适当的最大宽度，以适应您的布局 */
+        overflow-x: auto; /* 启用水平滚动 */
+    }
+</style>

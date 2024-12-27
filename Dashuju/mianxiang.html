@@ -1,0 +1,100 @@
+<layout name="layout" />
+<div class="container">
+    <div class="row row-offcanvas row-offcanvas-right">
+        <!--引入左标题栏!-->
+        <include file="Public:left"/>
+
+        <div class="col-xs-12 col-sm-8">
+            <!--移动端专属路径导航 !-->
+            <ol class="breadcrumb visible-xs-block" style="background-color: #96b97d">
+                <li><a class="yfj-a" href="{:U('Index/index')}">首页</a></li>
+                <li><a class="yfj-a" href="{:U('Dashuju/mianxiang')}">面相分析</a></li>
+            </ol>
+
+            <!--大数据面相分析!-->
+            <form class="form-horizontal" method="post" role="form" enctype="multipart/form-data" action="{:U('Dashuju/mianxiang_result')}">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><span class="glyphicon glyphicon-edit"></span> 面相分析</h3>
+                    </div>
+                    <div class="panel-body">
+                        <p>测试方法：上传你的头像图片，点击立即测算，并查看测算结果，请自行体会其中的吉凶指示。</p>
+                        <hr>
+
+                        <div style="text-align:center;">
+                            <div style="display: inline-block; text-align: left;">
+                                <label for="image">选择图片：</label>
+                                <input type="file" name="image" id="image">
+                                <br>
+                                <label>活体检测：</label>检测结果中不符合要求的人脸会被过滤
+                                <br>
+                                <select class="yfj-bazi" name="liveness">
+                                    <option value="NONE">不进行控制</option>
+                                    <option value="LOW">较低的活体要求</option>
+                                    <option value="NORMAL">一般的活体要求</option>
+                                    <option value="HIGH">较高的活体要求</option>
+                                </select>
+                            </div>
+                            <div style="display: inline-block; text-align: center; vertical-align: middle;">
+                                <button type="submit" class="btn btn-success yfj-btn-success" style="display: inline-block;">立即测算</button>
+                            </div>
+                        </div>
+
+                        <hr>
+                        <p>什么是大数据面相分析：缘份居利用大数据，对面相五官特征点进行分析，结合《麻衣相术》《柳庄相法》对运势进行推断，成功率较高。</p>
+                    </div>
+                </div>
+            </form>
+
+            <!--简介!-->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><span class="glyphicon glyphicon-list"></span> 大数据面相分析简介</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-xs-12 col-lg-12">
+                            <p>1.利用大数据，对面相五官特征点进行分析，结合《麻衣相术》《柳庄相法》对运势进行推断，成功率较高。</p>
+                            <p>2.心诚则灵，测算结果仅供参考。</p>
+                        </div><!--/.col-xs-6.col-lg-4-->
+                    </div>
+                </div>
+            </div>
+
+            <!--占卜大全!-->
+            <div class="panel panel-default">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><span class="glyphicon glyphicon-list"></span> 最新文章
+                            <span class="pull-right">
+                                <a style="color: #333333" href="{:U('Zhuanti/index')}" target="_blank">更多</a>
+                            </span>
+                        </h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-xs-12 col-lg-12">
+                                <ul class="list-group">
+                                    <volist name="new_list" id="vo">
+                                        <a href="{:U('Zhuanti/detail',array('id'=>$vo['doc_id']))}" target="_blank" class="list-group-item">【{$vo.doc_keyword}】 {$vo.doc_title} <span class="pull-right visible-sm-block visible-md-block visible-lg-block"> {$vo.doc_time}</span></a>
+                                    </volist>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--引入广告!-->
+        <include file="Public:advertisement"/>
+
+    </div>
+</div>
+
+
+<script>
+    //左标题栏按钮active加深()
+    $("#dashuju_mianxiang").addClass("active")
+</script>
+

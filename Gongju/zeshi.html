@@ -1,0 +1,135 @@
+<layout name="layout" />
+<div class="container">
+    <div class="row row-offcanvas row-offcanvas-right">
+        <!--引入左标题栏!-->
+        <include file="Public:left"/>
+
+        <div class="col-xs-12 col-sm-8">
+            <!--移动端专属路径导航 !-->
+            <ol class="breadcrumb visible-xs-block" style="background-color: #96b97d">
+                <li><a class="yfj-a" href="{:U('Index/index')}">首页</a></li>
+                <li><a class="yfj-a" href="{:U('Zhuanti/zeshi')}">择吉日查询</a></li>
+            </ol>
+
+            <!--小六壬占卜!-->
+            <form class="form-horizontal" method="post" role="form" action="{:U('Zhuanti/zeshi_result')}">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><span class="glyphicon glyphicon-edit"></span> 择吉时查询</h3>
+                    </div>
+                    <div class="panel-body">
+                        <p>查询方法：选择查询时间范围和择事项。</p>
+                        <hr>
+
+                        <div style="text-align:center;">
+                            <label>查询范围：</label>
+                            <select class="yfj-bazi" name="future">
+                                <option value="0">未来7天</option>
+                                <option value="1" selected>未来15天</option>
+                                <option value="2">未来60天</option>
+                                <option value="3">未来90天</option>
+                            </select>
+                            <br>
+                            <br>
+                            <label>择吉事项：</label>
+                            <select class="yfj-bazi" name="incident">
+                                <option value="0">搬家</option>
+                                <option value="1">装修</option>
+                                <option value="2">入宅</option>
+                                <option value="3">订婚</option>
+                                <option value="4">领证</option>
+                                <option value="5">求嗣</option>
+                                <option value="6">纳财</option>
+                                <option value="7">开市</option>
+                                <option value="8">交易|提车</option>
+                                <option value="9">置产</option>
+                                <option value="10">动土</option>
+                                <option value="11">出行</option>
+                                <option value="12">安葬</option>
+                                <option value="13">祭祀</option>
+                                <option value="14">祈福</option>
+                                <option value="15">沐浴</option>
+                                <option value="16">订盟</option>
+                                <option value="17">纳婿</option>
+                                <option value="18">修坟</option>
+                                <option value="19">破土</option>
+                                <option value="20">安葬</option>
+                                <option value="21">立碑</option>
+                                <option value="22">开生坟</option>
+                                <option value="23">合寿木</option>
+                                <option value="24">入殓</option>
+                                <option value="25">移柩</option>
+                                <option value="26">伐木</option>
+                                <option value="27">掘井</option>
+                                <option value="28">挂匾</option>
+                                <option value="29">栽种</option>
+                                <option value="30">入学</option>
+                                <option value="31">理发</option>
+                                <option value="32">会亲友</option>
+                                <option value="33">赴任</option>
+                                <option value="34">求医</option>
+                                <option value="35">治病</option>
+                            </select>
+                            <br>
+                            <br>
+                            <button type="submit" class="btn btn-success yfj-btn-success">立即查询</button>
+                        </div>
+
+                        <hr>
+                        <p>查询黄道吉日的时候最好先取日之忌宜，再查时之忌宜。</p>
+                    </div>
+                </div>
+            </form>
+
+            <!--简介!-->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><span class="glyphicon glyphicon-list"></span> 测算简介</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-xs-12 col-lg-12">
+                            <p>1.查询黄道吉日的时候最好先取日之忌宜，再通过老黄历查时之忌宜。</p>
+                            <p>2.心诚则灵，测算结果仅供参考。</p>
+                        </div><!--/.col-xs-6.col-lg-4-->
+                    </div>
+                </div>
+            </div>
+
+
+            <!--文章大全!-->
+            <div class="panel panel-default">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><span class="glyphicon glyphicon-list"></span> 最新文章
+                            <span class="pull-right">
+                                <a style="color: #333333" href="{:U('Zhuanti/index')}" target="_blank">更多</a>
+                            </span>
+                        </h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-xs-12 col-lg-12">
+                                <ul class="list-group">
+                                    <volist name="new_list" id="vo">
+                                        <a href="{:U('Zhuanti/detail',array('id'=>$vo['doc_id']))}" target="_blank" class="list-group-item">【{$vo.doc_keyword}】 {$vo.doc_title} <span class="pull-right visible-sm-block visible-md-block visible-lg-block"> {$vo.doc_time}</span></a>
+                                    </volist>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--引入广告!-->
+        <include file="Public:advertisement"/>
+    </div>
+</div>
+
+
+<script>
+    //左标题栏按钮active加深()
+    $("#zhuanti_zeshi").addClass("active")
+</script>
+

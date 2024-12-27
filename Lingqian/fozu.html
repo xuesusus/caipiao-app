@@ -1,0 +1,91 @@
+<layout name="layout" />
+<div class="container">
+    <div class="row row-offcanvas row-offcanvas-right">
+        <!--引入左标题栏!-->
+        <include file="Public:left"/>
+
+        <div class="col-xs-12 col-sm-8">
+            <!--移动端专属路径导航 !-->
+            <ol class="breadcrumb visible-xs-block" style="background-color: #96b97d">
+                <li><a class="yfj-a" href="{:U('Index/index')}">首页</a></li>
+                <li><a class="yfj-a" href="{:U('Lingqian/fozu')}">佛祖灵签</a></li>
+            </ol>
+
+            <!--灵签!-->
+            <form class="form-horizontal" method="post" role="form" action="{:U('Lingqian/fozu_result')}">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><span class="glyphicon glyphicon-edit"></span> 佛祖灵签</h3>
+                    </div>
+                    <div class="panel-body">
+                        <p>抽签方法：抽签前双手合十，默念【南无阿弥陀佛】三遍，心念集中于你所测之事，如爱情、事业、健康等，然后心念一动，点击立即抽签，并查看签辞，请自行体会其中的吉凶指示。</p>
+                        <hr>
+
+                        <div style="text-align:center;">
+                            <img src="__PUBLIC__/img/lingqian/fozu.png" style="width:15em">
+                            <br>
+                            <br>
+                            <!--<a id="chouqian" href="javascript:;" class="btn btn-success">立即抽签</a>-->
+                            <button type="submit" class="btn btn-success yfj-btn-success">立即抽签</button>
+                        </div>
+                        <hr>
+                        <p>什么是佛祖灵签：佛祖灵签是民间流传的，在佛祖前占卦的一种求签签种，（佛法讲究一切随缘，只要诚心，皆可求问各种事情。）佛祖灵签有五十一签，签文自古至今流传久远，各地签文略有不同，大同小异，解签的意思差不多。</p>
+                    </div>
+                </div>
+            </form>
+
+            <!--简介!-->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><span class="glyphicon glyphicon-list"></span> 抽签简介</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-xs-12 col-lg-12">
+                            <p>1.释迦摩尼是佛教的创始人，被后人尊称佛祖。在很多人的心目中，佛祖拥有无边的法力，受到万民朝拜。最特别的地方就是佛祖的灵签很灵。很多人慕名而来就是希望能在这上面求取一支灵签。</p>
+                            <p>2.心诚则灵，测算结果仅供参考。</p>
+                        </div><!--/.col-xs-6.col-lg-4-->
+                    </div>
+                </div>
+            </div>
+
+            <!--灵签大全!-->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><span class="glyphicon glyphicon-list"></span> 佛祖灵签大全</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <volist name="list" id="vo">
+                            <div class="col-xs-6 col-lg-4">
+                                <p> <a style="color: #333333" href="{:U('Lingqian/fozu_result',array('id'=>$vo['id']))}"> 佛祖灵签第 {$vo.id} 签 </a> </p>
+                            </div><!--/.col-xs-6.col-lg-4-->
+                        </volist>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--引入广告!-->
+        <include file="Public:advertisement"/>
+
+    </div>
+</div>
+
+
+<script>
+    //左标题栏按钮active加深()
+    $("#lingqian_fozu").addClass("active")
+
+//    $("#chouqian").show();//立即抽签
+//    $("#qianci").hide();//查看签辞
+//
+//    $("#chouqian").click(function() {
+//        $("#chouqian").hide();//立即抽签
+//        $("#qianci").show();//查看签辞
+//    });
+
+</script>
+
+
+
