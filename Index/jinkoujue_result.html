@@ -1,0 +1,141 @@
+<layout name="layout" />
+<style>
+    table {
+        border-collapse: collapse;
+        width: 300px;
+        height: 300px;
+        margin: 0 auto; /* 设置表格水平居中 */
+    }
+    td {
+        border: 1px solid black;
+        width: 100px;
+        height: 100px;
+        text-align: right; /* 设置文本右对齐 */
+        font-size: 14px;
+        padding-right: 5px; /* 可以添加一些右边距 */
+    }
+</style>
+<div class="container">
+    <div class="row row-offcanvas row-offcanvas-right">
+        <!--引入左标题栏!-->
+        <include file="Public:left"/>
+
+        <div class="col-xs-12 col-sm-8">
+            <!--移动端专属路径导航 !-->
+            <ol class="breadcrumb visible-xs-block" style="background-color: #96b97d">
+                <li><a class="yfj-a" href="{:U('Index/index')}">首页</a></li>
+                <li><a class="yfj-a" href="{:U('Index/jinkoujue')}">金口诀</a></li>
+            </ol>
+
+            <!--测算结果!-->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><span class="glyphicon glyphicon-eye-open"></span> 金口诀排盘结果</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <!--测算结果!-->
+                        <div class="col-xs-12 col-lg-12">
+                            <!--排盘简批!-->
+                            <div class="panel panel-default">
+                                <div class="panel-heading"><strong>基本信息</strong></div>
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <strong>姓名：</strong>{$list.name}  ({$list.sex}) <br>
+                                            <strong>公历：</strong>{$list.gongli} <br>
+                                            <strong>农历：</strong>{$list.nongli} <br>
+                                            <strong>节气：</strong>{$list.jieqi} <br>
+                                            <strong>四柱：</strong><font color="red">{$list.sizhu_info.year_gan}{$list.sizhu_info.year_zhi}   {$list.sizhu_info.month_gan}{$list.sizhu_info.month_zhi}  {$list.sizhu_info.day_gan}{$list.sizhu_info.day_zhi}  {$list.sizhu_info.hour_gan}{$list.sizhu_info.hour_zhi}</font> <br>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <strong>旬空：</strong><font color="blue">{$list.xunkong}</font><br>
+                                            <strong>四大空亡：</strong><font color="blue">{$list.kongwang}</font><br>
+                                            <strong>神煞：</strong>
+                                                        贵人——{$list.shensha.guiren}  日禄——{$list.shensha.rilu} <br> 
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;驿马——{$list.shensha.yima}    桃花——{$list.shensha.taohua}<br>
+                                            <strong>月将：</strong><font color="green">{$list.yuejiang}</font> 
+                                            <strong>年命：</strong><font color="green">{$list.nianming}</font> 
+                                            <strong>行年：</strong><font color="green">{$list.hangnian}</font>
+                                        </div> <!-- 这一列是空的，用于将内容平均分布在两侧 -->
+                                 </div>
+                            </div>
+
+                            <!--金口诀!-->
+                            <div class="panel panel-default">
+                                <!-- Default panel contents -->
+                                <div class="panel-heading"><strong>金口诀排盘</strong></div>
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <div class="col-xs-12 col-lg-12">
+                                            <strong>人元：</strong>{$list.pan_info.renyuan_info.ganzhi}  <font color="red">【{$list.pan_info.renyuan_info.shuaiwang}】</font><br>
+                                            <br>
+                                            <strong>贵神：</strong>{$list.pan_info.guishen_info.ganzhi} (<font color="purple">{$list.pan_info.guishen_info.name}</font>)<font color="blue"> {$list.pan_info.guishen_info.yongyao}</font><font color="red">【{$list.pan_info.guishen_info.shuaiwang}】</font><br>
+                                            <br>
+                                            <strong>将神：</strong>{$list.pan_info.jiangshen_info.ganzhi} (<font color="purple">{$list.pan_info.jiangshen_info.name}</font>)<font color="blue"> {$list.pan_info.jiangshen_info.yongyao}</font><font color="red">【{$list.pan_info.jiangshen_info.shuaiwang}】</font> <br>
+                                            <br>
+                                            <strong>地分：</strong>{$list.pan_info.difen_info.ganzhi}  <font color="red">【{$list.pan_info.difen_info.shuaiwang}】</font> <br>
+                                            <br>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        <div style="text-align:center;">
+                            <a class="btn btn-danger yfj-btn-success" href="{:U('Index/jinkoujue')}">返回重排</a>
+                        </div>
+                                <br>
+                    </div>
+                </div>
+            </div>
+                </div>
+            </div>
+
+            <!--简介!-->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><span class="glyphicon glyphicon-list"></span> 测算告诫</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-xs-12 col-lg-12">
+                            <p>1.测算结果若是理想，固然是一件可喜可贺的事情，如果测算结果不理想，缘主也不必灰心。缘主的命运，即便算得再准，也还是需要缘主自己去把握。算命的目的是为了趋吉避凶，顺势而行。
+                            <p>2.正所谓一命二运三风水，四积阴德五读书，六名七相八敬神，九交贵人十修身。平时积善行德，心存善念，必有善行，善念善行，天必佑之。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--其他展示!-->
+            <div class="panel panel-default">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><span class="glyphicon glyphicon-list"></span> 最新文章
+                            <span class="pull-right">
+                                <a style="color: #333333" href="{:U('Zhuanti/index')}" target="_blank">更多</a>
+                            </span>
+                        </h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-xs-12 col-lg-12">
+                                <ul class="list-group">
+                                    <volist name="new_list" id="vo">
+                                        <a href="{:U('Zhuanti/detail',array('id'=>$vo['doc_id']))}" target="_blank" class="list-group-item">【{$vo.doc_keyword}】 {$vo.doc_title} <span class="pull-right visible-sm-block visible-md-block visible-lg-block"> {$vo.doc_time}</span></a>
+                                    </volist>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        <!--引入广告!-->
+        </div>
+        <include file="Public:advertisement"/>
+    </div>
+</div>
+<script>
+    //左标题栏按钮active加深()
+    $("#bazi_jinkoujue").addClass("active")
+</script>

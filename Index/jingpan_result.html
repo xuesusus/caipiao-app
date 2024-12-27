@@ -1,0 +1,764 @@
+<layout name="layout" />
+<div class="container">
+    <div class="row row-offcanvas row-offcanvas-right">
+        <!--引入左标题栏!-->
+        <include file="Public:left"/>
+
+        <div class="col-xs-12 col-sm-8">
+            <!--移动端专属路径导航 !-->
+            <ol class="breadcrumb visible-xs-block" style="background-color: #96b97d">
+                <li><a class="yfj-a" href="{:U('Index/index')}">首页</a></li>
+                <li><a class="yfj-a" href="{:U('Index/jingpan')}">八字精盘</a></li>
+            </ol>
+
+            <!--测算结果!-->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><span class="glyphicon glyphicon-eye-open"></span> 四柱八字精盘结果</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <!--测算结果!-->
+                        <div class="col-xs-12 col-lg-12">
+                            <!--八字精盘!-->
+                            <div class="panel panel-default">
+                                <!-- Default panel contents -->
+                                <div class="panel-heading"><strong>流年盘</strong></div>
+                                <div class="panel-body">
+                                    <p><strong>姓名：</strong>{$list.base_info.name}</p>
+                                    <p><strong>阴历：</strong>{$list.base_info.nongli} ({$list.base_info.sex})</p>
+                                    <p><strong>阳历：</strong>{$list.base_info.gongli}</p>
+                                    <p><strong>星宿信息：</strong>{$list.base_info.xingxiu} </p>
+                                    <p><strong>年柱纳音：</strong>{$list.detail_info.sizhu_info.year.ny}命  (司令：{$list.base_info.siling})</p>
+                                    <p><strong>命卦信息：</strong>{$list.base_info.minggua.minggua_name}卦({$list.base_info.minggua.minggua_fangwei})</p>
+                                    <p><strong>生肖星座：</strong>肖{$list.base_info.shengxiao} {$list.base_info.xingzuo}座</p>
+                                    <p><strong>五行旺度：</strong>{$list.base_info.wuxing_wangdu}</p>
+                                    <p><strong>起运信息：</strong>{$list.base_info.qiyun}</p>
+                                    <p><strong>交运信息：</strong>{$list.base_info.jiaoyun_mang}</p>
+                                    <p><strong>天干留意：</strong>{$list.base_info.tiangan_liuyi}</p>
+                                    <p><strong>地支留意：</strong>{$list.base_info.dizhi_liuyi}</p>
+                                    <p><strong>胎元命身：</strong>胎息:{$list.base_info.taixi}({$list.base_info.taixi_nayin})&nbsp;
+                                        胎元:{$list.base_info.taiyuan}({$list.base_info.taiyuan_nayin})&nbsp;
+                                        命宫:{$list.base_info.minggong}({$list.base_info.minggong_nayin})&nbsp;
+                                        身宫:{$list.base_info.shengong}({$list.base_info.shengong_nayin})&nbsp;
+                                </div>
+
+                                <table class="table">
+                                    <tbody>
+                                    <tr>
+                                        <th>大运</th>
+                                        <volist name="list.detail_info.dayun_info" id="vo" key="key">
+                                            <th onmouseover="highlight(this)" onmouseout="unhighlight(this)" style="font-weight: normal;" onclick="getLiuYear({$key - 1})">
+                                                {$vo.dayun_start_year}起
+                                                <br>
+                                                {$vo.dayun_end_year}止
+                                                <br>
+                                                ({$vo.dayun_start_age}岁)
+                                                <br>
+                                            </th>
+                                        </volist>
+                                        <th style="font-weight: normal;">#</th>
+                                        <th style="font-weight: normal;">#</th>
+                                        <th style="font-weight: normal;">#</th>
+                                    </tr>
+                                    <!--<tr>
+                                        <th>小运</th>
+                                        <th id="xiaoYun0" style="font-weight: normal;">--</th>
+                                        <th id="xiaoYun1" style="font-weight: normal;">--</th>
+                                        <th id="xiaoYun2" style="font-weight: normal;">--</th>
+                                        <th id="xiaoYun3" style="font-weight: normal;">--</th>
+                                        <th id="xiaoYun4" style="font-weight: normal;">--</th>
+                                        <th id="xiaoYun5" style="font-weight: normal;">--</th>
+                                        <th id="xiaoYun6" style="font-weight: normal;">--</th>
+                                        <th id="xiaoYun7" style="font-weight: normal;">--</th>
+                                        <th id="xiaoYun8" style="font-weight: normal;">--</th>
+                                        <th id="xiaoYun9" style="font-weight: normal;">--</th>
+                                        <th style="font-weight: normal;">#</th>
+                                        <th style="font-weight: normal;">#</th>
+                                    </tr>!-->
+                                    <tr>
+                                        <th>流年</th>
+                                        <th onmouseover="highlight(this)" onmouseout="unhighlight(this)" id="liuNian0" style="font-weight: normal;" onclick="getLiuMonth(0)">选大运</th>
+                                        <th onmouseover="highlight(this)" onmouseout="unhighlight(this)" id="liuNian1" style="font-weight: normal;" onclick="getLiuMonth(1)">选大运</th>
+                                        <th onmouseover="highlight(this)" onmouseout="unhighlight(this)" id="liuNian2" style="font-weight: normal;" onclick="getLiuMonth(2)">选大运</th>
+                                        <th onmouseover="highlight(this)" onmouseout="unhighlight(this)" id="liuNian3" style="font-weight: normal;" onclick="getLiuMonth(3)">选大运</th>
+                                        <th onmouseover="highlight(this)" onmouseout="unhighlight(this)" id="liuNian4" style="font-weight: normal;" onclick="getLiuMonth(4)">选大运</th>
+                                        <th onmouseover="highlight(this)" onmouseout="unhighlight(this)" id="liuNian5" style="font-weight: normal;" onclick="getLiuMonth(5)">选大运</th>
+                                        <th onmouseover="highlight(this)" onmouseout="unhighlight(this)" id="liuNian6" style="font-weight: normal;" onclick="getLiuMonth(6)">选大运</th>
+                                        <th onmouseover="highlight(this)" onmouseout="unhighlight(this)" id="liuNian7" style="font-weight: normal;" onclick="getLiuMonth(7)">选大运</th>
+                                        <th onmouseover="highlight(this)" onmouseout="unhighlight(this)" id="liuNian8" style="font-weight: normal;" onclick="getLiuMonth(8)">选大运</th>
+                                        <th onmouseover="highlight(this)" onmouseout="unhighlight(this)" id="liuNian9" style="font-weight: normal;" onclick="getLiuMonth(9)">选大运</th>
+                                        <th style="font-weight: normal;">#</th>
+                                        <th style="font-weight: normal;">#</th>
+                                    </tr>
+                                    <tr>
+                                        <th>流月</th>
+                                        <th onmouseover="highlight(this)" onmouseout="unhighlight(this)" id="liuYue0" style="font-weight: normal;" onclick="getLiuMonthInfo(0)">选流年</th>
+                                        <th onmouseover="highlight(this)" onmouseout="unhighlight(this)" id="liuYue1" style="font-weight: normal;" onclick="getLiuMonthInfo(1)">选流年</th>
+                                        <th onmouseover="highlight(this)" onmouseout="unhighlight(this)" id="liuYue2" style="font-weight: normal;" onclick="getLiuMonthInfo(2)">选流年</th>
+                                        <th onmouseover="highlight(this)" onmouseout="unhighlight(this)" id="liuYue3" style="font-weight: normal;" onclick="getLiuMonthInfo(3)">选流年</th>
+                                        <th onmouseover="highlight(this)" onmouseout="unhighlight(this)" id="liuYue4" style="font-weight: normal;" onclick="getLiuMonthInfo(4)">选流年</th>
+                                        <th onmouseover="highlight(this)" onmouseout="unhighlight(this)" id="liuYue5" style="font-weight: normal;" onclick="getLiuMonthInfo(5)">选流年</th>
+                                        <th onmouseover="highlight(this)" onmouseout="unhighlight(this)" id="liuYue6" style="font-weight: normal;" onclick="getLiuMonthInfo(6)">选流年</th>
+                                        <th onmouseover="highlight(this)" onmouseout="unhighlight(this)" id="liuYue7" style="font-weight: normal;" onclick="getLiuMonthInfo(7)">选流年</th>
+                                        <th onmouseover="highlight(this)" onmouseout="unhighlight(this)" id="liuYue8" style="font-weight: normal;" onclick="getLiuMonthInfo(8)">选流年</th>
+                                        <th onmouseover="highlight(this)" onmouseout="unhighlight(this)" id="liuYue9" style="font-weight: normal;" onclick="getLiuMonthInfo(9)">选流年</th>
+                                        <th onmouseover="highlight(this)" onmouseout="unhighlight(this)" id="liuYue10" style="font-weight: normal;" onclick="getLiuMonthInfo(10)">选流年</th>
+                                        <th onmouseover="highlight(this)" onmouseout="unhighlight(this)" id="liuYue11" style="font-weight: normal;" onclick="getLiuMonthInfo(11)">选流年</th>
+                                    </tr>
+                                    </tbody>
+                                </table>
+
+                                <hr>
+
+                                <!-- Table -->
+                                <table class="table">
+                                    <tbody>
+                                        <tr style="color: grey">
+                                            <th>日期</th>
+                                            <th>流月</th>
+                                            <th>流年</th>
+                                            <th>大运</th>
+                                            <th>年柱</th>
+                                            <th>月柱</th>
+                                            <th>日柱</th>
+                                            <th>时柱</th>  <!--<td>{$vo.status|displayIcon}</td>!-->
+                                        </tr>
+                                        <tr>
+                                            <th scope="row" style="color: grey">主星</th>
+                                            <th style="font-weight: normal;" id="zhuXingLiuYue">--</th>
+                                            <th style="font-weight: normal;" id="zhuXingLiuNian">--</th>
+                                            <th style="font-weight: normal;" id="zhuXingDayun">--</th>
+                                            <th style="font-weight: normal;">{$list.detail_info.sizhu_info.year.tg_god}</th>
+                                            <th style="font-weight: normal;">{$list.detail_info.sizhu_info.month.tg_god}</th>
+                                            <th style="font-weight: normal;">{$list.detail_info.sizhu_info.day.tg_god}</th>
+                                            <th style="font-weight: normal;">{$list.detail_info.sizhu_info.hour.tg_god}</th>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row" style="color: grey">天干</th>
+                                            <th id="tianGanLiuYue"><font size="5px">--</font></th>
+                                            <th id="tianGanLiuNian"><font size="5px">--</font></th>
+                                            <th id="tianGanDayun"><font size="5px">--</font></th>
+                                            <th><font size="5px">{$list.detail_info.sizhu_info.year.tg|displayGanWuxing}</font></th>
+                                            <th><font size="5px">{$list.detail_info.sizhu_info.month.tg|displayGanWuxing}</font></th>
+                                            <th><font size="5px">{$list.detail_info.sizhu_info.day.tg|displayGanWuxing}</font></th>
+                                            <th><font size="5px">{$list.detail_info.sizhu_info.hour.tg|displayGanWuxing}</font></th>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row" style="color: grey">地支</th>
+                                            <th id="diZhiLiuYue"><font size="5px">--</font></th>
+                                            <th id="diZhiLiuNian"><font size="5px">--</font></th>
+                                            <th id="diZhiDayun"><font size="5px">--</font></th>
+                                            <th><font size="5px">{$list.detail_info.sizhu_info.year.dz|displayZhiWuxing}</font></th>
+                                            <th><font size="5px">{$list.detail_info.sizhu_info.month.dz|displayZhiWuxing}</font></th>
+                                            <th><font size="5px">{$list.detail_info.sizhu_info.day.dz|displayZhiWuxing}</font></th>
+                                            <th><font size="5px">{$list.detail_info.sizhu_info.hour.dz|displayZhiWuxing}</font></th>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row" style="color: grey">藏干</th>
+                                            <th style="font-weight: normal;" id="cangGanLiuYue">--</th>
+                                            <th style="font-weight: normal;" id="cangGanLiuNian">--</th>
+                                            <th style="font-weight: normal;" id="cangGanDayun">--</th>
+                                            <th style="font-weight: normal;">
+                                                <volist name="list.detail_info.sizhu_info.year.cg" id="cgItem" key="cgIndex">
+                                                    <font size="3px">{$cgItem|displayGanWuxing}</font>
+                                                    <?php echo $list['detail_info']['sizhu_info']['year']['dz_god'][$cgIndex - 1]; ?>
+                                                    <br/>
+                                                </volist>
+                                            </th>
+                                            <th style="font-weight: normal;">
+                                                <volist name="list.detail_info.sizhu_info.month.cg" id="cgItem" key="cgIndex">
+                                                    <font size="3px">{$cgItem|displayGanWuxing}</font>
+                                                    <?php echo $list['detail_info']['sizhu_info']['month']['dz_god'][$cgIndex - 1]; ?>
+                                                    <br/>
+                                                </volist>
+                                            </th>
+                                            <th style="font-weight: normal;">
+                                                <volist name="list.detail_info.sizhu_info.day.cg" id="cgItem" key="cgIndex">
+                                                    <font size="3px">{$cgItem|displayGanWuxing}</font>
+                                                    <?php echo $list['detail_info']['sizhu_info']['day']['dz_god'][$cgIndex - 1]; ?>
+                                                    <br/>
+                                                </volist>
+                                            </th>
+                                            <th style="font-weight: normal;">
+                                                <volist name="list.detail_info.sizhu_info.hour.cg" id="cgItem" key="cgIndex">
+                                                    <font size="3px">{$cgItem|displayGanWuxing}</font>
+                                                    <?php echo $list['detail_info']['sizhu_info']['hour']['dz_god'][$cgIndex - 1]; ?>
+                                                    <br/>
+                                                </volist>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row" style="color: grey">星运</th>
+                                            <th style="font-weight: normal;" id="xingYunLiuYue">--</th>
+                                            <th style="font-weight: normal;" id="xingYunLiuNian">--</th>
+                                            <th style="font-weight: normal;" id="xingYunDayun">--</th>
+                                            <th style="font-weight: normal;">{$list.detail_info.sizhu_info.year.dz_star_cs}</th>
+                                            <th style="font-weight: normal;">{$list.detail_info.sizhu_info.month.dz_star_cs}</th>
+                                            <th style="font-weight: normal;">{$list.detail_info.sizhu_info.day.dz_star_cs}</th>
+                                            <th style="font-weight: normal;">{$list.detail_info.sizhu_info.hour.dz_star_cs}</th>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row" style="color: grey">自坐</th>
+                                            <th style="font-weight: normal;" id="ziZuoLiuYue">--</th>
+                                            <th style="font-weight: normal;" id="ziZuoLiuNian">--</th>
+                                            <th style="font-weight: normal;" id="ziZuoDayun">--</th>
+                                            <th style="font-weight: normal;">{$list.detail_info.sizhu_info.year.dz_self_cs}</th>
+                                            <th style="font-weight: normal;">{$list.detail_info.sizhu_info.month.dz_self_cs}</th>
+                                            <th style="font-weight: normal;">{$list.detail_info.sizhu_info.day.dz_self_cs}</th>
+                                            <th style="font-weight: normal;">{$list.detail_info.sizhu_info.hour.dz_self_cs}</th>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row" style="color: grey">空亡</th>
+                                            <th style="font-weight: normal;" id="kongWangLiuYue">--</th>
+                                            <th style="font-weight: normal;" id="kongWangLiuNian">--</th>
+                                            <th style="font-weight: normal;" id="kongWangDayun">--</th>
+                                            <th style="font-weight: normal;">{$list.detail_info.sizhu_info.year.kw}</th>
+                                            <th style="font-weight: normal;">{$list.detail_info.sizhu_info.month.kw}</th>
+                                            <th style="font-weight: normal;">{$list.detail_info.sizhu_info.day.kw}</th>
+                                            <th style="font-weight: normal;">{$list.detail_info.sizhu_info.hour.kw}</th>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row" style="color: grey">纳音</th>
+                                            <th style="font-weight: normal;" id="naYinLiuYue">--</th>
+                                            <th style="font-weight: normal;" id="naYinLiuNian">--</th>
+                                            <th style="font-weight: normal;" id="naYinDayun">--</th>
+                                            <th style="font-weight: normal;">{$list.detail_info.sizhu_info.year.ny}</th>
+                                            <th style="font-weight: normal;">{$list.detail_info.sizhu_info.month.ny}</th>
+                                            <th style="font-weight: normal;">{$list.detail_info.sizhu_info.day.ny}</th>
+                                            <th style="font-weight: normal;">{$list.detail_info.sizhu_info.hour.ny}</th>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row" style="color: grey">神煞</th>
+                                            <th style="font-weight: normal; color: #d8ccae" id="shenShaLiuYue">
+                                                --
+                                            </th>
+                                            <th style="font-weight: normal; color: #d8ccae" id="shenShaLiuNian">
+                                                --
+                                            </th>
+                                            <th style="font-weight: normal; color: #d8ccae" id="shenShaBigYun">
+                                                --
+                                            </th>
+                                            <th style="font-weight: normal; color: #d8ccae">
+                                                <?php
+                                                $shenshaString = $list['detail_info']['sizhu_info']['year']['shensha'];
+                                                $shenshaArray = explode(' ', $shenshaString);
+                                                ?>
+                                                <volist name="shenshaArray" id="item">
+                                                    {$item}<br/>
+                                                </volist>
+                                            </th>
+                                            <th style="font-weight: normal; color: #d8ccae">
+                                                <?php
+                                                $shenshaString = $list['detail_info']['sizhu_info']['month']['shensha'];
+                                                $shenshaArray = explode(' ', $shenshaString);
+                                                ?>
+                                                <volist name="shenshaArray" id="item">
+                                                    {$item}<br/>
+                                                </volist>
+                                            </th>
+                                            <th style="font-weight: normal; color: #d8ccae">
+                                                <?php
+                                                $shenshaString = $list['detail_info']['sizhu_info']['day']['shensha'];
+                                                $shenshaArray = explode(' ', $shenshaString);
+                                                ?>
+                                                <volist name="shenshaArray" id="item">
+                                                    {$item}<br/>
+                                                </volist>
+                                            </th>
+                                            <th style="font-weight: normal; color: #d8ccae">
+                                                <?php
+                                                $shenshaString = $list['detail_info']['sizhu_info']['hour']['shensha'];
+                                                $shenshaArray = explode(' ', $shenshaString);
+                                                ?>
+                                                <volist name="shenshaArray" id="item">
+                                                    {$item}<br/>
+                                                </volist>
+                                            </th>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div class="panel panel-default">
+                                <!-- Default panel contents -->
+                                <div class="panel-heading"><strong>胎命身</strong></div>
+                                <!-- Table -->
+                                <table class="table">
+                                    <tbody>
+                                    <tr style="color: grey">
+                                        <th>胎命身</th>
+                                        <th>胎元</th>
+                                        <th>胎息</th>
+                                        <th>命宫</th>
+                                        <th>身宫</th>  <!--<td>{$vo.status|displayIcon}</td>!-->
+                                    </tr>
+                                    <tr>
+                                        <th scope="row" style="color: grey">主星</th>
+                                        <th style="font-weight: normal;">{$list.detail_info.taishen_info.taiyuan.tg_god}</th>
+                                        <th style="font-weight: normal;">{$list.detail_info.taishen_info.taixi.tg_god}</th>
+                                        <th style="font-weight: normal;">{$list.detail_info.taishen_info.minggong.tg_god}</th>
+                                        <th style="font-weight: normal;">{$list.detail_info.taishen_info.shengong.tg_god}</th>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row" style="color: grey">天干</th>
+                                        <th><font size="5px">{$list.detail_info.taishen_info.taiyuan.gan|displayGanWuxing}</font></th>
+                                        <th><font size="5px">{$list.detail_info.taishen_info.taixi.gan|displayGanWuxing}</font></th>
+                                        <th><font size="5px">{$list.detail_info.taishen_info.minggong.gan|displayGanWuxing}</font></th>
+                                        <th><font size="5px">{$list.detail_info.taishen_info.shengong.gan|displayGanWuxing}</font></th>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row" style="color: grey">地支</th>
+                                        <th><font size="5px">{$list.detail_info.taishen_info.taiyuan.zhi|displayZhiWuxing}</font></th>
+                                        <th><font size="5px">{$list.detail_info.taishen_info.taixi.zhi|displayZhiWuxing}</font></th>
+                                        <th><font size="5px">{$list.detail_info.taishen_info.minggong.zhi|displayZhiWuxing}</font></th>
+                                        <th><font size="5px">{$list.detail_info.taishen_info.shengong.zhi|displayZhiWuxing}</font></th>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row" style="color: grey">藏干</th>
+                                        <th style="font-weight: normal;">
+                                            <volist name="list.detail_info.taishen_info.taiyuan.dz_cg" id="cgItem" key="cgIndex">
+                                                <font size="3px">{$cgItem|displayGanWuxing}</font>
+                                                <?php echo $list['detail_info']['taishen_info']['taiyuan']['dz_god'][$cgIndex - 1]; ?>
+                                                <br/>
+                                            </volist>
+                                        </th>
+                                        <th style="font-weight: normal;">
+                                            <volist name="list.detail_info.taishen_info.taixi.dz_cg" id="cgItem" key="cgIndex">
+                                                <font size="3px">{$cgItem|displayGanWuxing}</font>
+                                                <?php echo $list['detail_info']['taishen_info']['taixi']['dz_god'][$cgIndex - 1]; ?>
+                                                <br/>
+                                            </volist>
+                                        </th>
+                                        <th style="font-weight: normal;">
+                                            <volist name="list.detail_info.taishen_info.minggong.dz_cg" id="cgItem" key="cgIndex">
+                                                <font size="3px">{$cgItem|displayGanWuxing}</font>
+                                                <?php echo $list['detail_info']['taishen_info']['minggong']['dz_god'][$cgIndex - 1]; ?>
+                                                <br/>
+                                            </volist>
+                                        </th>
+                                        <th style="font-weight: normal;">
+                                            <volist name="list.detail_info.taishen_info.shengong.dz_cg" id="cgItem" key="cgIndex">
+                                                <font size="3px">{$cgItem|displayGanWuxing}</font>
+                                                <?php echo $list['detail_info']['taishen_info']['shengong']['dz_god'][$cgIndex - 1]; ?>
+                                                <br/>
+                                            </volist>
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row" style="color: grey">星运</th>
+                                        <th style="font-weight: normal;">{$list.detail_info.taishen_info.taiyuan.dz_star_cs}</th>
+                                        <th style="font-weight: normal;">{$list.detail_info.taishen_info.taixi.dz_star_cs}</th>
+                                        <th style="font-weight: normal;">{$list.detail_info.taishen_info.minggong.dz_star_cs}</th>
+                                        <th style="font-weight: normal;">{$list.detail_info.taishen_info.shengong.dz_star_cs}</th>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row" style="color: grey">自坐</th>
+                                        <th style="font-weight: normal;">{$list.detail_info.taishen_info.taiyuan.dz_self_cs}</th>
+                                        <th style="font-weight: normal;">{$list.detail_info.taishen_info.taixi.dz_self_cs}</th>
+                                        <th style="font-weight: normal;">{$list.detail_info.taishen_info.minggong.dz_self_cs}</th>
+                                        <th style="font-weight: normal;">{$list.detail_info.taishen_info.shengong.dz_self_cs}</th>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row" style="color: grey">空亡</th>
+                                        <th style="font-weight: normal;">{$list.detail_info.taishen_info.taiyuan.kongwang}</th>
+                                        <th style="font-weight: normal;">{$list.detail_info.taishen_info.taixi.kongwang}</th>
+                                        <th style="font-weight: normal;">{$list.detail_info.taishen_info.minggong.kongwang}</th>
+                                        <th style="font-weight: normal;">{$list.detail_info.taishen_info.shengong.kongwang}</th>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row" style="color: grey">纳音</th>
+                                        <th style="font-weight: normal;">{$list.detail_info.taishen_info.taiyuan.nayin}</th>
+                                        <th style="font-weight: normal;">{$list.detail_info.taishen_info.taixi.nayin}</th>
+                                        <th style="font-weight: normal;">{$list.detail_info.taishen_info.minggong.nayin}</th>
+                                        <th style="font-weight: normal;">{$list.detail_info.taishen_info.shengong.nayin}</th>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row" style="color: grey">神煞</th>
+                                        <th style="font-weight: normal; color: #d8ccae">
+                                            <?php
+                                                $shenshaString = $list['detail_info']['taishen_info']['taiyuan']['shensha'];
+                                                $shenshaArray = explode(' ', $shenshaString);
+                                                ?>
+                                            <volist name="shenshaArray" id="item">
+                                                {$item}<br/>
+                                            </volist>
+                                        </th>
+                                        <th style="font-weight: normal; color: #d8ccae">
+                                            <?php
+                                                $shenshaString = $list['detail_info']['taishen_info']['taixi']['shensha'];
+                                                $shenshaArray = explode(' ', $shenshaString);
+                                                ?>
+                                            <volist name="shenshaArray" id="item">
+                                                {$item}<br/>
+                                            </volist>
+                                        </th>
+                                        <th style="font-weight: normal; color: #d8ccae">
+                                            <?php
+                                                $shenshaString = $list['detail_info']['taishen_info']['minggong']['shensha'];
+                                                $shenshaArray = explode(' ', $shenshaString);
+                                                ?>
+                                            <volist name="shenshaArray" id="item">
+                                                {$item}<br/>
+                                            </volist>
+                                        </th>
+                                        <th style="font-weight: normal; color: #d8ccae">
+                                            <?php
+                                                $shenshaString = $list['detail_info']['taishen_info']['shengong']['shensha'];
+                                                $shenshaArray = explode(' ', $shenshaString);
+                                                ?>
+                                            <volist name="shenshaArray" id="item">
+                                                {$item}<br/>
+                                            </volist>
+                                        </th>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+                        <div style="text-align:center;">
+                            <a class="btn btn-danger yfj-btn-success" href="{:U('Index/jingpan')}">返回重排</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--简介!-->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><span class="glyphicon glyphicon-list"></span> 测算告诫</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-xs-12 col-lg-12">
+                            <p>1.测算结果若是理想，固然是一件可喜可贺的事情，如果测算结果不理想，缘主也不必灰心。缘主的命运，即便算得再准，也还是需要缘主自己去把握。算命的目的是为了趋吉避凶，顺势而行。
+                            <p>2.正所谓一命二运三风水，四积阴德五读书，六名七相八敬神，九交贵人十修身。平时积善行德，心存善念，必有善行，善念善行，天必佑之。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--其他展示!-->
+            <div class="panel panel-default">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><span class="glyphicon glyphicon-list"></span> 最新文章
+                            <span class="pull-right">
+                                <a style="color: #333333" href="{:U('Zhuanti/index')}" target="_blank">更多</a>
+                            </span>
+                        </h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-xs-12 col-lg-12">
+                                <ul class="list-group">
+                                    <volist name="new_list" id="vo">
+                                        <a href="{:U('Zhuanti/detail',array('id'=>$vo['doc_id']))}" target="_blank" class="list-group-item">【{$vo.doc_keyword}】 {$vo.doc_title} <span class="pull-right visible-sm-block visible-md-block visible-lg-block"> {$vo.doc_time}</span></a>
+                                    </volist>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--引入广告!-->
+        <include file="Public:advertisement"/>
+
+    </div>
+</div>
+
+<script>
+    //左标题栏按钮active加深()
+    $("#bazi_jingpan").addClass("active")
+</script>
+
+<script>
+var daYunIndex;
+var liuNianIndex;
+var liuYueIndex;
+
+function getLiuYear(index) {
+    var listData = JSON.parse('<?php echo json_encode($list); ?>');
+    daYunIndex = index; //保存大运下标
+
+    for (var i = 0; i < 10; i++) {
+        $('#liuNian' + i).text(listData.detail_info.dayun_info[daYunIndex].liunian_info[i].liunian_year);
+        var existingText = $('#liuNian' + i).text(); // 获取已有的文本内容
+        var newText = existingText + '<br>(' + listData.detail_info.dayun_info[daYunIndex].liunian_info[i].liunian_age + ')岁'; // 在已有文本的下方添加 '<br>edf'
+        $('#liuNian' + i).html(newText); // 更新元素的 HTML 内容
+    }
+
+    /*主星*/
+    $('#zhuXingDayun').text(listData.detail_info.dayun_info[daYunIndex].dayun_year_tg_god);
+    /*天干*/
+    var dayunTg = listData.detail_info.dayun_info[daYunIndex].dayun_year_tg;
+    if (dayunTg === '甲' || dayunTg === '乙') {
+        $('#tianGanDayun').html('<font size="5" color="green">' + dayunTg + '</font>');
+    } else if (dayunTg === '丙' || dayunTg === '丁') {
+        $('#tianGanDayun').html('<font size="5" color="red">' + dayunTg + '</font>');
+    } else if (dayunTg === '戊' || dayunTg === '己') {
+        $('#tianGanDayun').html('<font size="5" color="#8b4513">' + dayunTg + '</font>');
+    }else if (dayunTg === '庚' || dayunTg === '辛') {
+        $('#tianGanDayun').html('<font size="5" color="orange">' + dayunTg + '</font>');
+    } else {
+        $('#tianGanDayun').html('<font size="5" color="#00008b">' + dayunTg + '</font>');
+    }
+    /*地支*/
+    var dayunDz = listData.detail_info.dayun_info[daYunIndex].dayun_year_dz;
+    if (dayunDz === '寅' || dayunDz === '卯') {
+        $('#diZhiDayun').html('<font size="5" color="green">' + dayunDz + '</font>');
+    } else if (dayunDz === '巳' || dayunDz === '午') {
+        $('#diZhiDayun').html('<font size="5" color="red">' + dayunDz + '</font>');
+    } else if (dayunDz === '辰' || dayunDz === '丑' || dayunDz === '戌' || dayunDz === '未') {
+        $('#diZhiDayun').html('<font size="5" color="#8b4513">' + dayunDz + '</font>');
+    }else if (dayunDz === '申' || dayunDz === '酉') {
+        $('#diZhiDayun').html('<font size="5" color="orange">' + dayunDz + '</font>');
+    } else {
+        $('#diZhiDayun').html('<font size="5" color="#00008b">' + dayunDz + '</font>');
+    }
+
+    /*藏干 十神*/
+    var dayunYearCg = listData.detail_info.dayun_info[daYunIndex].dayun_year_cg;
+    var dayunYearDzGod = listData.detail_info.dayun_info[daYunIndex].dayun_year_dz_god;
+    if (dayunYearCg.length === dayunYearDzGod.length) {
+        var tableContent = '';
+
+        for (var j = 0; j < dayunYearCg.length; j++) {
+            var row = '<tr>';
+
+            if (dayunYearCg[j] === '甲' || dayunYearCg[j] === '乙') {
+                row += '<td><font size="3" color="green">' + dayunYearCg[j] + '</font></td>';
+            } else if (dayunYearCg[j] === '丙' || dayunYearCg[j] === '丁') {
+                row += '<td><font size="3" color="red">' + dayunYearCg[j] + '</font></td>';
+            } else if (dayunYearCg[j] === '戊' || dayunYearCg[j] === '己') {
+                row += '<td><font size="3" color="#8b4513">' + dayunYearCg[j] + '</font></td>';
+            } else if (dayunYearCg[j] === '庚' || dayunYearCg[j] === '辛') {
+                row += '<td><font size="3" color="orange">' + dayunYearCg[j] + '</font></td>';
+            } else {
+                row += '<td><font color="#00008b">' + dayunYearCg[j] + '</font></td>';
+            }
+
+            row += '<td>' + dayunYearDzGod[j] + '</td>';
+            row += '</tr>';
+
+            tableContent += row;
+        }
+        // 将表格内容替换目标元素的内容
+        $('#cangGanDayun').html(tableContent);
+    }
+
+    /*星运*/
+    $('#xingYunDayun').text(listData.detail_info.dayun_info[daYunIndex].dayun_dz_star_cs);
+    /*自坐*/
+    $('#ziZuoDayun').text(listData.detail_info.dayun_info[daYunIndex].dayun_dz_self_cs);
+    /*空亡*/
+    $('#kongWangDayun').text(listData.detail_info.dayun_info[daYunIndex].dayun_kongwang);
+    /*纳音*/
+    $('#naYinDayun').text(listData.detail_info.dayun_info[daYunIndex].dayun_nayin);
+    /*神煞*/
+    var shensha = listData.detail_info.dayun_info[daYunIndex].dayun_shensha;
+    var shenshaArray = shensha.split(" "); // 将字符串按空格分割为数组
+    var verticalContent = ""; // 垂直展示的内容
+    for (var k = 0; k < shenshaArray.length; k++) {
+        verticalContent += shenshaArray[k] + "<br>";
+    }
+    //alert(verticalContent);
+    // 将垂直展示的内容插入到相应的 HTML 元素中
+    $('#shenShaBigYun').html(verticalContent);
+
+}
+
+function getLiuMonth(index) {
+    var listData = JSON.parse('<?php echo json_encode($list); ?>');
+    liuNianIndex = index //保存流年下标
+    for (var i = 0; i < 12; i++) {
+        $('#liuYue' + i).text(listData.detail_info.dayun_info[daYunIndex].liunian_info[liuNianIndex].liuyue_info[i].liuyue_month_tg);
+
+        var existingText = $('#liuYue' + i).text(); // 获取已有的文本内容
+        var newText = existingText + '<br>' + listData.detail_info.dayun_info[daYunIndex].liunian_info[liuNianIndex].liuyue_info[i].liuyue_month_dz ; // 在已有文本的下方添加 '<br>edf'
+        $('#liuYue' + i).html(newText); // 更新元素的 HTML 内容
+    }
+
+
+    /*主星*/
+    $('#zhuXingLiuNian').text(listData.detail_info.dayun_info[daYunIndex].liunian_info[liuNianIndex].liunian_tg_god);
+    /*天干*/
+    var liunianTg = listData.detail_info.dayun_info[daYunIndex].liunian_info[liuNianIndex].liunian_year_tg;
+    if (liunianTg === '甲' || liunianTg === '乙') {
+        $('#tianGanLiuNian').html('<font size="5" color="green">' + liunianTg + '</font>');
+    } else if (liunianTg === '丙' || liunianTg === '丁') {
+        $('#tianGanLiuNian').html('<font size="5" color="red">' + liunianTg + '</font>');
+    } else if (liunianTg === '戊' || liunianTg === '己') {
+        $('#tianGanLiuNian').html('<font size="5" color="#8b4513">' + liunianTg + '</font>');
+    }else if (liunianTg === '庚' || liunianTg === '辛') {
+        $('#tianGanLiuNian').html('<font size="5" color="orange">' + liunianTg + '</font>');
+    } else {
+        $('#tianGanLiuNian').html('<font size="5" color="#00008b">' + liunianTg + '</font>');
+    }
+    /*地支*/
+    var liunianDz = listData.detail_info.dayun_info[daYunIndex].liunian_info[liuNianIndex].liunian_year_dz;
+    if (liunianDz === '寅' || liunianDz === '卯') {
+        $('#diZhiLiuNian').html('<font size="5" color="green">' + liunianDz + '</font>');
+    } else if (liunianDz === '巳' || liunianDz === '午') {
+        $('#diZhiLiuNian').html('<font size="5" color="red">' + liunianDz + '</font>');
+    } else if (liunianDz === '辰' || liunianDz === '丑' || liunianDz === '戌' || liunianDz === '未') {
+        $('#diZhiLiuNian').html('<font size="5" color="#8b4513">' + liunianDz + '</font>');
+    }else if (liunianDz === '申' || liunianDz === '酉') {
+        $('#diZhiLiuNian').html('<font size="5" color="orange">' + liunianDz + '</font>');
+    } else {
+        $('#diZhiLiuNian').html('<font size="5" color="#00008b">' + liunianDz + '</font>');
+    }
+
+    /*藏干 十神*/
+    var liunianYearCg = listData.detail_info.dayun_info[daYunIndex].liunian_info[liuNianIndex].liunian_year_cg;
+    var liunianYearDzGod = listData.detail_info.dayun_info[daYunIndex].liunian_info[liuNianIndex].liunian_dz_god;
+    if (liunianYearCg.length === liunianYearDzGod.length) {
+        var tableContent = '';
+
+        for (var j = 0; j < liunianYearCg.length; j++) {
+            var row = '<tr>';
+
+            if (liunianYearCg[j] === '甲' || liunianYearCg[j] === '乙') {
+                row += '<td><font size="3" color="green">' + liunianYearCg[j] + '</font></td>';
+            } else if (liunianYearCg[j] === '丙' || liunianYearCg[j] === '丁') {
+                row += '<td><font size="3" color="red">' + liunianYearCg[j] + '</font></td>';
+            } else if (liunianYearCg[j] === '戊' || liunianYearCg[j] === '己') {
+                row += '<td><font size="3" color="#8b4513">' + liunianYearCg[j] + '</font></td>';
+            } else if (liunianYearCg[j] === '庚' || liunianYearCg[j] === '辛') {
+                row += '<td><font size="3" color="orange">' + liunianYearCg[j] + '</font></td>';
+            } else {
+                row += '<td><font color="#00008b">' + liunianYearCg[j] + '</font></td>';
+            }
+
+            row += '<td>' + liunianYearDzGod[j] + '</td>';
+            row += '</tr>';
+
+            tableContent += row;
+        }
+        // 将表格内容替换目标元素的内容
+        $('#cangGanLiuNian').html(tableContent);
+    }
+
+    /*星运*/
+    $('#xingYunLiuNian').text(listData.detail_info.dayun_info[daYunIndex].liunian_info[liuNianIndex].liunian_dz_star_cs);
+    /*自坐*/
+    $('#ziZuoLiuNian').text(listData.detail_info.dayun_info[daYunIndex].liunian_info[liuNianIndex].liunian_dz_self_cs);
+    /*空亡*/
+    $('#kongWangLiuNian').text(listData.detail_info.dayun_info[daYunIndex].liunian_info[liuNianIndex].liunian_kongwang);
+    /*纳音*/
+    $('#naYinLiuNian').text(listData.detail_info.dayun_info[daYunIndex].liunian_info[liuNianIndex].liunian_nayin);
+    /*神煞*/
+    var shensha = listData.detail_info.dayun_info[daYunIndex].liunian_info[liuNianIndex].liunian_shensha;
+    var shenshaArray = shensha.split(" "); // 将字符串按空格分割为数组
+    var verticalContent = ""; // 垂直展示的内容
+    for (var k = 0; k < shenshaArray.length; k++) {
+        verticalContent += shenshaArray[k] + "<br>";
+    }
+    //alert(verticalContent);
+    // 将垂直展示的内容插入到相应的 HTML 元素中
+    $('#shenShaLiuNian').html(verticalContent);
+}
+
+function getLiuMonthInfo(index) {
+    var listData = JSON.parse('<?php echo json_encode($list); ?>');
+    liuYueIndex = index //保存流月下标
+
+
+    /*主星*/
+    $('#zhuXingLiuYue').text(listData.detail_info.dayun_info[daYunIndex].liunian_info[liuNianIndex].liuyue_info[liuYueIndex].liuyue_month_tg_god
+    );
+    /*天干*/
+    var liuyueTg = listData.detail_info.dayun_info[daYunIndex].liunian_info[liuNianIndex].liuyue_info[liuYueIndex].liuyue_month_tg;
+    if (liuyueTg === '甲' || liuyueTg === '乙') {
+        $('#tianGanLiuYue').html('<font size="5" color="green">' + liuyueTg + '</font>');
+    } else if (liuyueTg === '丙' || liuyueTg === '丁') {
+        $('#tianGanLiuYue').html('<font size="5" color="red">' + liuyueTg + '</font>');
+    } else if (liuyueTg === '戊' || liuyueTg === '己') {
+        $('#tianGanLiuYue').html('<font size="5" color="#8b4513">' + liuyueTg + '</font>');
+    }else if (liuyueTg === '庚' || liuyueTg === '辛') {
+        $('#tianGanLiuYue').html('<font size="5" color="orange">' + liuyueTg + '</font>');
+    } else {
+        $('#tianGanLiuYue').html('<font size="5" color="#00008b">' + liuyueTg + '</font>');
+    }
+    /*地支*/
+    var liuyueDz = listData.detail_info.dayun_info[daYunIndex].liunian_info[liuNianIndex].liuyue_info[liuYueIndex].liuyue_month_dz;
+    if (liuyueDz === '寅' || liuyueDz === '卯') {
+        $('#diZhiLiuYue').html('<font size="5" color="green">' + liuyueDz + '</font>');
+    } else if (liuyueDz === '巳' || liuyueDz === '午') {
+        $('#diZhiLiuYue').html('<font size="5" color="red">' + liuyueDz + '</font>');
+    } else if (liuyueDz === '辰' || liuyueDz === '丑' || liuyueDz === '戌' || liuyueDz === '未') {
+        $('#diZhiLiuYue').html('<font size="5" color="#8b4513">' + liuyueDz + '</font>');
+    }else if (liuyueDz === '申' || liuyueDz === '酉') {
+        $('#diZhiLiuYue').html('<font size="5" color="orange">' + liuyueDz + '</font>');
+    } else {
+        $('#diZhiLiuYue').html('<font size="5" color="#00008b">' + liuyueDz + '</font>');
+    }
+
+    /*藏干 十神*/
+    var liuyueMonthCg = listData.detail_info.dayun_info[daYunIndex].liunian_info[liuNianIndex].liuyue_info[liuYueIndex].liuyue_month_cg;
+    var liuyueMonthDzGod = listData.detail_info.dayun_info[daYunIndex].liunian_info[liuNianIndex].liunian_dz_god;
+    if (liuyueMonthCg.length === liuyueMonthDzGod.length) {
+        var tableContent = '';
+
+        for (var j = 0; j < liuyueMonthCg.length; j++) {
+            var row = '<tr>';
+
+            if (liuyueMonthCg[j] === '甲' || liuyueMonthCg[j] === '乙') {
+                row += '<td><font size="3" color="green">' + liuyueMonthCg[j] + '</font></td>';
+            } else if (liuyueMonthCg[j] === '丙' || liuyueMonthCg[j] === '丁') {
+                row += '<td><font size="3" color="red">' + liuyueMonthCg[j] + '</font></td>';
+            } else if (liuyueMonthCg[j] === '戊' || liuyueMonthCg[j] === '己') {
+                row += '<td><font size="3" color="#8b4513">' + liuyueMonthCg[j] + '</font></td>';
+            } else if (liuyueMonthCg[j] === '庚' || liuyueMonthCg[j] === '辛') {
+                row += '<td><font size="3" color="orange">' + liuyueMonthCg[j] + '</font></td>';
+            } else {
+                row += '<td><font color="#00008b">' + liuyueMonthCg[j] + '</font></td>';
+            }
+
+            row += '<td>' + liuyueMonthDzGod[j] + '</td>';
+            row += '</tr>';
+
+            tableContent += row;
+        }
+        // 将表格内容替换目标元素的内容
+        $('#cangGanLiuYue').html(tableContent);
+    }
+
+    /*星运*/
+    $('#xingYunLiuYue').text(listData.detail_info.dayun_info[daYunIndex].liunian_info[liuNianIndex].liuyue_info[liuYueIndex].liuyue_dz_star_cs);
+    /*自坐*/
+    $('#ziZuoLiuYue').text(listData.detail_info.dayun_info[daYunIndex].liunian_info[liuNianIndex].liuyue_info[liuYueIndex].liuyue_dz_self_cs);
+    /*空亡*/
+    $('#kongWangLiuYue').text(listData.detail_info.dayun_info[daYunIndex].liunian_info[liuNianIndex].liuyue_info[liuYueIndex].liuyue_kongwang);
+    /*纳音*/
+    $('#naYinLiuYue').text(listData.detail_info.dayun_info[daYunIndex].liunian_info[liuNianIndex].liuyue_info[liuYueIndex].liuyue_nayin);
+    /*神煞*/
+    var shensha = listData.detail_info.dayun_info[daYunIndex].liunian_info[liuNianIndex].liuyue_info[liuYueIndex].liuyue_shensha;
+    var shenshaArray = shensha.split(" "); // 将字符串按空格分割为数组
+    var verticalContent = ""; // 垂直展示的内容
+    for (var k = 0; k < shenshaArray.length; k++) {
+        verticalContent += shenshaArray[k] + "<br>";
+    }
+    //alert(verticalContent);
+    // 将垂直展示的内容插入到相应的 HTML 元素中
+    $('#shenShaLiuYue').html(verticalContent);
+}
+
+function highlight(element) {
+    element.classList.add('highlighted');
+}
+
+function unhighlight(element) {
+    element.classList.remove('highlighted');
+}
+
+</script>
+
+<style>
+    .highlighted {
+        background-color: lightblue;
+    }
+</style>

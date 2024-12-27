@@ -1,0 +1,250 @@
+<layout name="layout" />
+<style>
+    table {
+        border-collapse: collapse;
+        width: 300px;
+        height: 300px;
+        margin: 0 auto; /* 设置表格水平居中 */
+    }
+    td {
+        border: 1px solid black;
+        width: 100px;
+        height: 100px;
+        text-align: right; /* 设置文本右对齐 */
+        font-size: 14px;
+        padding-right: 5px; /* 可以添加一些右边距 */
+    }
+</style>
+<div class="container">
+    <div class="row row-offcanvas row-offcanvas-right">
+        <!--引入左标题栏!-->
+        <include file="Public:left"/>
+
+        <div class="col-xs-12 col-sm-8">
+            <!--移动端专属路径导航 !-->
+            <ol class="breadcrumb visible-xs-block" style="background-color: #96b97d">
+                <li><a class="yfj-a" href="{:U('Index/index')}">首页</a></li>
+                <li><a class="yfj-a" href="{:U('Index/qimen')}">奇门遁甲</a></li>
+            </ol>
+
+            <!--测算结果!-->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><span class="glyphicon glyphicon-eye-open"></span> 奇门遁甲排盘结果</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <!--测算结果!-->
+                        <div class="col-xs-12 col-lg-12">
+                            <!--排盘简批!-->
+                            <div class="panel panel-default">
+                                <div class="panel-heading"><strong>基本信息</strong></div>
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <div class="col-md-6">
+
+                                            <strong>姓名：</strong>{$list.name}  ({$list.sex}) <br>
+                                            <strong>公历：</strong>{$list.gongli} <br>
+                                            <strong>农历：</strong>{$list.nongli} <br>
+                                            <strong>上一节气：</strong>{$list.jieqi_pre} <br>
+                                            <strong>下一节气：</strong>{$list.jieqi_next} <br>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <strong>四柱：</strong><font color="red">{$list.sizhu_info.year_gan}{$list.sizhu_info.year_zhi}   {$list.sizhu_info.month_gan}{$list.sizhu_info.month_zhi}  {$list.sizhu_info.day_gan}{$list.sizhu_info.day_zhi}  {$list.sizhu_info.hour_gan}{$list.sizhu_info.hour_zhi}</font> <br>
+                                            <strong>旬空：</strong><font color="blue">{$list.xunkong_info.year_xunkong}(年) {$list.xunkong_info.month_xunkong}(月) {$list.xunkong_info.day_xunkong}(日) {$list.xunkong_info.hour_xunkong}(时)</font><br>
+                                            <strong>旬首：</strong><font color="green">日空-{$list.xunkong_info.day_xunkong}</font>({$list.xunshou_info.day_xunshou}旬) <font color="green">时空-{$list.xunkong_info.hour_xunkong}</font>({$list.xunshou})<br>
+                                            <strong>定局：</strong><font color="red">{$list.dunju}</font> {$list.dingju} {$list.panlei} <br>
+                                            <strong>值符：</strong><font color="red">{$list.zhifu_info.zhifu_name}</font>落{$list.zhifu_info.zhifu_luogong}宫 <br>
+                                            <strong>值使：</strong><font color="red">{$list.zhifu_info.zhishi_name}</font>落{$list.zhifu_info.zhishi_luogong}宫 <br>
+                                        </div> <!-- 这一列是空的，用于将内容平均分布在两侧 -->
+                                 </div>
+                            </div>
+
+                            <!--奇门遁甲!-->
+                            <div class="panel panel-default">
+                                <!-- Default panel contents -->
+                                <div class="panel-heading"><strong>奇门遁甲盘</strong></div>
+                                <div class="panel-body">
+                                </div>
+                                <!-- Table -->
+                                <table>
+                                    <tr>
+                                        <td>
+                                            {$list.gong_pan.3.shenpan.bashen}<br>
+                                            {$list.gong_pan.3.tianpan.jiuxing_tianqin_sanqiliuyi}
+                                            {$list.gong_pan.3.tianpan.jiuxing_tianqin}
+                                            {$list.gong_pan.3.tianpan.jiuxing}
+                                            {$list.gong_pan.3.tianpan.sanqiliuyi}
+                                            {$list.gong_pan.3.tianpan.bashen}<br>
+                                            {$list.gong_pan.3.dipan.bashen}
+                                            {$list.gong_pan.3.dipan.bagua}
+                                            {$list.gong_pan.3.renpan.bamen}  {$list.gong_pan.3.dipan.sanqiliuyi}<br>
+                                        </td>
+                                        <td>
+                                            {$list.gong_pan.4.shenpan.bashen}<br>
+                                            {$list.gong_pan.4.tianpan.jiuxing_tianqin_sanqiliuyi}
+                                            {$list.gong_pan.4.tianpan.jiuxing_tianqin}
+                                            {$list.gong_pan.4.tianpan.jiuxing}
+                                            {$list.gong_pan.4.tianpan.sanqiliuyi}
+                                            {$list.gong_pan.4.tianpan.bashen}<br>
+                                            {$list.gong_pan.4.dipan.bashen}
+                                            {$list.gong_pan.4.dipan.bagua}
+                                            {$list.gong_pan.4.renpan.bamen}  {$list.gong_pan.4.dipan.sanqiliuyi}<br>
+                                        </td>
+                                        <td>
+                                            {$list.gong_pan.5.shenpan.bashen}<br>
+                                            {$list.gong_pan.5.tianpan.jiuxing_tianqin_sanqiliuyi}
+                                            {$list.gong_pan.5.tianpan.jiuxing_tianqin}
+                                            {$list.gong_pan.5.tianpan.jiuxing}
+                                            {$list.gong_pan.5.tianpan.sanqiliuyi}
+                                            {$list.gong_pan.5.tianpan.bashen}<br>
+                                            {$list.gong_pan.5.dipan.bashen}
+                                            {$list.gong_pan.5.dipan.bagua}
+                                           {$list.gong_pan.5.renpan.bamen}  {$list.gong_pan.5.dipan.sanqiliuyi}<br>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            {$list.gong_pan.2.shenpan.bashen}<br>
+                                            {$list.gong_pan.2.tianpan.jiuxing_tianqin_sanqiliuyi}
+                                            {$list.gong_pan.2.tianpan.jiuxing_tianqin}
+                                            {$list.gong_pan.2.tianpan.jiuxing}
+                                            {$list.gong_pan.2.tianpan.sanqiliuyi}
+                                            {$list.gong_pan.2.tianpan.bashen}<br>
+                                            {$list.gong_pan.2.dipan.bashen}
+                                            {$list.gong_pan.2.dipan.bagua}
+                                            {$list.gong_pan.2.renpan.bamen}  {$list.gong_pan.2.dipan.sanqiliuyi}<br>
+                                        </td>
+                                        <td>
+                                            {$list.gong_pan.8.shenpan.bashen}<br>
+                                            {$list.gong_pan.8.tianpan.jiuxing_tianqin_sanqiliuyi}
+                                            {$list.gong_pan.8.tianpan.jiuxing_tianqin}
+                                            {$list.gong_pan.8.tianpan.jiuxing}
+                                            {$list.gong_pan.8.tianpan.sanqiliuyi}
+                                            {$list.gong_pan.8.tianpan.bashen}<br>
+                                            {$list.gong_pan.8.dipan.bashen}
+                                            {$list.gong_pan.8.dipan.bagua}
+                                            {$list.gong_pan.8.renpan.bamen}  {$list.gong_pan.8.dipan.sanqiliuyi}<br>
+                                        </td>
+                                        <td>
+                                            {$list.gong_pan.6.shenpan.bashen}<br>
+                                            {$list.gong_pan.6.tianpan.jiuxing_tianqin_sanqiliuyi}
+                                            {$list.gong_pan.6.tianpan.jiuxing_tianqin}
+                                            {$list.gong_pan.6.tianpan.jiuxing}
+                                            {$list.gong_pan.6.tianpan.sanqiliuyi}
+                                            {$list.gong_pan.6.tianpan.bashen}<br>
+                                            {$list.gong_pan.6.dipan.bashen}
+                                            {$list.gong_pan.6.dipan.bagua}
+                                            {$list.gong_pan.6.renpan.bamen}  {$list.gong_pan.6.dipan.sanqiliuyi}<br>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            {$list.gong_pan.1.shenpan.bashen}<br>
+                                            {$list.gong_pan.1.tianpan.jiuxing_tianqin_sanqiliuyi}
+                                            {$list.gong_pan.1.tianpan.jiuxing_tianqin}
+                                            {$list.gong_pan.1.tianpan.jiuxing}
+                                            {$list.gong_pan.1.tianpan.sanqiliuyi}
+                                            {$list.gong_pan.1.tianpan.bashen}<br>
+                                            {$list.gong_pan.1.dipan.bashen}
+                                            {$list.gong_pan.1.dipan.bagua}
+                                            {$list.gong_pan.1.renpan.bamen}  {$list.gong_pan.1.dipan.sanqiliuyi}<br>
+                                        </td>
+                                        <td>
+                                            {$list.gong_pan.0.shenpan.bashen}<br>
+                                            {$list.gong_pan.0.tianpan.jiuxing_tianqin_sanqiliuyi}
+                                            {$list.gong_pan.0.tianpan.jiuxing_tianqin}
+                                            {$list.gong_pan.0.tianpan.jiuxing}
+                                            {$list.gong_pan.0.tianpan.sanqiliuyi}
+                                            {$list.gong_pan.0.tianpan.bashen}<br>
+                                            {$list.gong_pan.0.dipan.bashen}
+                                            {$list.gong_pan.0.dipan.bagua}
+                                            {$list.gong_pan.0.renpan.bamen}  {$list.gong_pan.0.dipan.sanqiliuyi}<br>
+                                        </td>
+                                        <td>
+                                            {$list.gong_pan.7.shenpan.bashen}<br>
+                                            {$list.gong_pan.7.tianpan.jiuxing_tianqin_sanqiliuyi}
+                                            {$list.gong_pan.7.tianpan.jiuxing_tianqin}
+                                            {$list.gong_pan.7.tianpan.jiuxing}
+                                            {$list.gong_pan.7.tianpan.sanqiliuyi}
+                                            {$list.gong_pan.7.tianpan.bashen}<br>
+                                            {$list.gong_pan.7.dipan.bashen}
+                                            {$list.gong_pan.7.dipan.bagua}
+                                            {$list.gong_pan.7.renpan.bamen}  {$list.gong_pan.7.dipan.sanqiliuyi}<br>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <br>
+                            </div>
+
+                            <!--排盘简批!-->
+                            <div class="panel panel-default">
+                                <div class="panel-heading"><strong>排盘简批</strong></div>
+                                <div class="panel-body">
+                                    <volist name="list.gong_pan" id="vo">
+                                        <p><strong>{$vo.renpan.bamen}：</strong><br>
+                                            [宫局]：<font color="red">{$vo.description.gong_ju}</font><br>
+                                            [宫局解析]：{$vo.description.gong_ju_desc}</p>
+                                            [落局解析]：{$vo.description.luo_gong_desc}</p>
+                                        <hr>
+                                    </volist>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="text-align:center;">
+                            <a class="btn btn-danger yfj-btn-success" href="{:U('Index/qimen')}">返回重排</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--简介!-->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><span class="glyphicon glyphicon-list"></span> 测算告诫</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-xs-12 col-lg-12">
+                            <p>1.测算结果若是理想，固然是一件可喜可贺的事情，如果测算结果不理想，缘主也不必灰心。缘主的命运，即便算得再准，也还是需要缘主自己去把握。算命的目的是为了趋吉避凶，顺势而行。
+                            <p>2.正所谓一命二运三风水，四积阴德五读书，六名七相八敬神，九交贵人十修身。平时积善行德，心存善念，必有善行，善念善行，天必佑之。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--其他展示!-->
+            <div class="panel panel-default">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><span class="glyphicon glyphicon-list"></span> 最新文章
+                            <span class="pull-right">
+                                <a style="color: #333333" href="{:U('Zhuanti/index')}" target="_blank">更多</a>
+                            </span>
+                        </h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-xs-12 col-lg-12">
+                                <ul class="list-group">
+                                    <volist name="new_list" id="vo">
+                                        <a href="{:U('Zhuanti/detail',array('id'=>$vo['doc_id']))}" target="_blank" class="list-group-item">【{$vo.doc_keyword}】 {$vo.doc_title} <span class="pull-right visible-sm-block visible-md-block visible-lg-block"> {$vo.doc_time}</span></a>
+                                    </volist>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--引入广告!-->
+        </div>
+        <include file="Public:advertisement"/>
+    </div>
+</div>
+<script>
+    //左标题栏按钮active加深()
+    $("#bazi_qimen").addClass("active")
+</script>

@@ -1,0 +1,719 @@
+<layout name="layout" />
+<div class="container">
+    <div class="row row-offcanvas row-offcanvas-right">
+        <!--引入左标题栏!-->
+        <include file="Public:left"/>
+
+        <div class="col-xs-12 col-sm-8">
+            <!--移动端专属路径导航 !-->
+            <ol class="breadcrumb visible-xs-block" style="background-color: #96b97d">
+                <li><a class="yfj-a" href="{:U('Index/index')}">首页</a></li>
+                <li><a class="yfj-a" href="{:U('Index/shengri')}">生日论命</a></li>
+            </ol>
+
+            <!--生日论命!-->
+            <form class="form-horizontal" method="post" role="form" action="{:U('Index/shengri_result')}">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><span class="glyphicon glyphicon-edit"></span> 生日论命</h3>
+                    </div>
+                    <div class="panel-body">
+                        <p>测试方法：选择您的【公历月日】，点击立即测算，并查看测算结果，请自行体会其中的吉凶指示。</p>
+                        <hr>
+
+                        <div style="text-align:center;">
+                            <br>
+                            <select class="yfj-jixiong-shuzi" name="month">
+                                <option value="12">12 </option>
+                                <option value="11">11 </option>
+                                <option value="10">10 </option>
+                                <option value="9">9 </option>
+                                <option value="8">8 </option>
+                                <option value="7">7 </option>
+                                <option value="6">6 </option>
+                                <option value="5">5 </option>
+                                <option value="4">4 </option>
+                                <option value="3">3 </option>
+                                <option value="2">2 </option>
+                                <option value="1">1 </option>
+                            </select>
+                            月
+                            <select class="yfj-jixiong-shuzi" name="day">
+                                <option value="31">31</option>
+                                <option value="30">30</option>
+                                <option value="29">29</option>
+                                <option value="28">28</option>
+                                <option value="27">27</option>
+                                <option value="26">26</option>
+                                <option value="25">25</option>
+                                <option value="24">24</option>
+                                <option value="23">23</option>
+                                <option value="22">22</option>
+                                <option value="21">21</option>
+                                <option value="20">20</option>
+                                <option value="19">19</option>
+                                <option value="18">18</option>
+                                <option value="17">17</option>
+                                <option value="16">16</option>
+                                <option value="15">15</option>
+                                <option value="14">14</option>
+                                <option value="13">13</option>
+                                <option value="12">12</option>
+                                <option value="11">11</option>
+                                <option value="10">10</option>
+                                <option value="9">9</option>
+                                <option value="8">8</option>
+                                <option value="7">7</option>
+                                <option value="6">6</option>
+                                <option value="5">5</option>
+                                <option value="4">4</option>
+                                <option value="3">3</option>
+                                <option value="2">2</option>
+                                <option value="1">1</option>
+                            </select>
+                            日
+                            <br>
+                            <br>
+                            <button type="submit" class="btn btn-success yfj-btn-success">立即测算</button>
+                        </div>
+
+                        <hr>
+                        <p>什么是生日论命：缘份居生日论命是通过《生日书》对生日论命进行测算，帮助大家分析生日对您的生命的启示，不同的生日都会有不同的命运。</p>
+                    </div>
+                </div>
+            </form>
+
+            <!--简介!-->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><span class="glyphicon glyphicon-list"></span> 测算简介</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-xs-12 col-lg-12">
+                            <p>1.生日论命，《生日书》是依据西洋星座分析写出来的。每个人的诞生，都是上天特别量身订制的，每个人的生日都是一种喜悦的经典。与此同时，每个人的生日都是个迷，星相命理给我们生命的启示，不同的生日都会有不同的命运。生日总有神奇的暗示，凭出生日期的数字测出内在性格和潜在力量。</p>
+                            <p>2.心诚则灵，测算结果仅供参考。</p>
+                        </div><!--/.col-xs-6.col-lg-4-->
+                    </div>
+                </div>
+            </div>
+
+            <!--最新文章!-->
+            <div class="panel panel-default">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><span class="glyphicon glyphicon-list"></span> 最新文章
+                            <span class="pull-right">
+                                <a style="color: #333333" href="{:U('Zhuanti/index')}'))}" target="_blank">更多</a>
+                            </span>
+                        </h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-xs-12 col-lg-12">
+                                <ul class="list-group">
+                                    <volist name="new_list" id="vo">
+                                        <a href="{:U('Zhuanti/detail',array('id'=>$vo['doc_id']))}'))}" target="_blank" class="list-group-item">【{$vo.doc_keyword}】 {$vo.doc_title} <span class="pull-right visible-sm-block visible-md-block visible-lg-block"> {$vo.doc_time}</span></a>
+                                    </volist>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--!生日论命大全-->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><span class="glyphicon glyphicon-list"></span> 生日论命大全</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="panel panel-default">
+                            <table width="95%" align="center" cellpadding="2" cellspacing="1" bgcolor="#CCCCCC">
+                                <tr align="center" bgcolor="dddddd">
+                                    <td colspan="12"><strong>一月份</strong></td>
+                                </tr>
+                                <tr align="center" bgcolor="#ffffff">
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'1-1'))}'))}" target="_blank">1日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'1-2'))}" target="_blank">2日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'1-3'))}" target="_blank">3日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'1-4'))}" target="_blank">4日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'1-5'))}" target="_blank">5日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'1-6'))}" target="_blank">6日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'1-7'))}" target="_blank">7日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'1-8'))}" target="_blank">8日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'1-9'))}" target="_blank">9日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'1-10'))}" target="_blank">10日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'1-11'))}" target="_blank">11日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'1-12'))}" target="_blank">12日</a></td>
+                                </tr>
+                                <tr align="center" bgcolor="#ffffff">
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'1-13'))}" target="_blank">13日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'1-14'))}" target="_blank">14日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'1-15'))}" target="_blank">15日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'1-16'))}" target="_blank">16日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'1-17'))}" target="_blank">17日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'1-18'))}" target="_blank">18日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'1-19'))}" target="_blank">19日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'1-20'))}" target="_blank">20日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'1-21'))}" target="_blank">21日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'1-22'))}" target="_blank">22日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'1-23'))}" target="_blank">23日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'1-24'))}" target="_blank">24日</a></td>
+                                </tr>
+                                <tr align="center" bgcolor="#ffffff">
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'1-25'))}" target="_blank">25日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'1-26'))}" target="_blank">26日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'1-27'))}" target="_blank">27日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'1-28'))}" target="_blank">28日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'1-29'))}" target="_blank">29日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'1-30'))}" target="_blank">30日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'1-31'))}" target="_blank">31日</a></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                            <br>
+                            <table width="95%" align="center" cellpadding="2" cellspacing="1" bgcolor="#CCCCCC">
+                                <tr align="center" bgcolor="dddddd">
+                                    <td colspan="12"><strong>二月份</strong></td>
+                                </tr>
+                                <tr align="center" bgcolor="#ffffff">
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'2-1'))}" target="_blank">1日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'2-2'))}" target="_blank">2日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'2-3'))}" target="_blank">3日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'2-4'))}" target="_blank">4日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'2-5'))}" target="_blank">5日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'2-6'))}" target="_blank">6日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'2-7'))}" target="_blank">7日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'2-8'))}" target="_blank">8日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'2-9'))}" target="_blank">9日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'2-10'))}" target="_blank">10日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'2-11'))}" target="_blank">11日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'2-12'))}" target="_blank">12日</a></td>
+                                </tr>
+                                <tr align="center" bgcolor="#ffffff">
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'2-13'))}" target="_blank">13日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'2-14'))}" target="_blank">14日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'2-15'))}" target="_blank">15日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'2-16'))}" target="_blank">16日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'2-17'))}" target="_blank">17日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'2-18'))}" target="_blank">18日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'2-19'))}" target="_blank">19日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'2-20'))}" target="_blank">20日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'2-21'))}" target="_blank">21日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'2-22'))}" target="_blank">22日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'2-23'))}" target="_blank">23日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'2-24'))}" target="_blank">24日</a></td>
+                                </tr>
+                                <tr align="center" bgcolor="#ffffff">
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'2-25'))}" target="_blank">25日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'2-26'))}" target="_blank">26日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'2-27'))}" target="_blank">27日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'2-28'))}" target="_blank">28日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'2-29'))}" target="_blank">29日</a></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                            <br>
+                            <table width="95%" align="center" cellpadding="2" cellspacing="1" bgcolor="#CCCCCC">
+                                <tr align="center" bgcolor="dddddd">
+                                    <td colspan="12"><strong>三月份</strong></td>
+                                </tr>
+                                <tr align="center" bgcolor="#ffffff">
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'3-1'))}" target="_blank">1日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'3-2'))}" target="_blank">2日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'3-3'))}" target="_blank">3日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'3-4'))}" target="_blank">4日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'3-5'))}" target="_blank">5日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'3-6'))}" target="_blank">6日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'3-7'))}" target="_blank">7日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'3-8'))}" target="_blank">8日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'3-9'))}" target="_blank">9日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'3-10'))}" target="_blank">10日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'3-11'))}" target="_blank">11日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'3-12'))}" target="_blank">12日</a></td>
+                                </tr>
+                                <tr align="center" bgcolor="#ffffff">
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'3-13'))}" target="_blank">13日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'3-14'))}" target="_blank">14日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'3-15'))}" target="_blank">15日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'3-16'))}" target="_blank">16日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'3-17'))}" target="_blank">17日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'3-18'))}" target="_blank">18日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'3-19'))}" target="_blank">19日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'3-20'))}" target="_blank">20日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'3-21'))}" target="_blank">21日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'3-22'))}" target="_blank">22日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'3-23'))}" target="_blank">23日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'3-24'))}" target="_blank">24日</a></td>
+                                </tr>
+                                <tr align="center" bgcolor="#ffffff">
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'3-25'))}" target="_blank">25日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'3-26'))}" target="_blank">26日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'3-27'))}" target="_blank">27日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'3-28'))}" target="_blank">28日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'3-29'))}" target="_blank">29日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'3-30'))}" target="_blank">30日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'3-31'))}" target="_blank">31日</a></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                            <br>
+                            <table width="95%" align="center" cellpadding="2" cellspacing="1" bgcolor="#CCCCCC">
+                                <tr align="center" bgcolor="dddddd">
+                                    <td colspan="12"><strong>四月份</strong></td>
+                                </tr>
+                                <tr align="center" bgcolor="#ffffff">
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'4-1'))}" target="_blank">1日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'4-2'))}" target="_blank">2日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'4-3'))}" target="_blank">3日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'4-4'))}" target="_blank">4日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'4-5'))}" target="_blank">5日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'4-6'))}" target="_blank">6日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'4-7'))}" target="_blank">7日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'4-8'))}" target="_blank">8日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'4-9'))}" target="_blank">9日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'4-10'))}" target="_blank">10日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'4-11'))}" target="_blank">11日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'4-12'))}" target="_blank">12日</a></td>
+                                </tr>
+                                <tr align="center" bgcolor="#ffffff">
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'4-13'))}" target="_blank">13日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'4-14'))}" target="_blank">14日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'4-15'))}" target="_blank">15日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'4-16'))}" target="_blank">16日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'4-17'))}" target="_blank">17日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'4-18'))}" target="_blank">18日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'4-19'))}" target="_blank">19日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'4-20'))}" target="_blank">20日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'4-21'))}" target="_blank">21日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'4-22'))}" target="_blank">22日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'4-23'))}" target="_blank">23日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'4-24'))}" target="_blank">24日</a></td>
+                                </tr>
+                                <tr align="center" bgcolor="#ffffff">
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'4-25'))}" target="_blank">25日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'4-26'))}" target="_blank">26日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'4-27'))}" target="_blank">27日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'4-28'))}" target="_blank">28日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'4-29'))}" target="_blank">29日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'4-30'))}" target="_blank">30日</a></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                            <br>
+                            <table width="95%" align="center" cellpadding="2" cellspacing="1" bgcolor="#CCCCCC">
+                                <tr align="center" bgcolor="dddddd">
+                                    <td colspan="12"><strong>五月份</strong></td>
+                                </tr>
+                                <tr align="center" bgcolor="#ffffff">
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'5-1'))}" target="_blank">1日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'5-2'))}" target="_blank">2日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'5-3'))}" target="_blank">3日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'5-4'))}" target="_blank">4日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'5-5'))}" target="_blank">5日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'5-6'))}" target="_blank">6日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'5-7'))}" target="_blank">7日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'5-8'))}" target="_blank">8日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'5-9'))}" target="_blank">9日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'5-10'))}" target="_blank">10日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'5-11'))}" target="_blank">11日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'5-12'))}" target="_blank">12日</a></td>
+                                </tr>
+                                <tr align="center" bgcolor="#ffffff">
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'5-13'))}" target="_blank">13日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'5-14'))}" target="_blank">14日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'5-15'))}" target="_blank">15日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'5-16'))}" target="_blank">16日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'5-17'))}" target="_blank">17日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'5-18'))}" target="_blank">18日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'5-19'))}" target="_blank">19日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'5-20'))}" target="_blank">20日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'5-21'))}" target="_blank">21日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'5-22'))}" target="_blank">22日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'5-23'))}" target="_blank">23日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'5-24'))}" target="_blank">24日</a></td>
+                                </tr>
+                                <tr align="center" bgcolor="#ffffff">
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'5-25'))}" target="_blank">25日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'5-26'))}" target="_blank">26日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'5-27'))}" target="_blank">27日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'5-28'))}" target="_blank">28日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'5-29'))}" target="_blank">29日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'5-30'))}" target="_blank">30日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'5-31'))}" target="_blank">31日</a></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                            <br> <table width="95%" align="center" cellpadding="2" cellspacing="1" bgcolor="#CCCCCC">
+                            <tr align="center" bgcolor="dddddd">
+                                <td colspan="12"><strong>六月份</strong></td>
+                            </tr>
+                            <tr align="center" bgcolor="#ffffff">
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'6-1'))}" target="_blank">1日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'6-2'))}" target="_blank">2日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'6-3'))}" target="_blank">3日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'6-4'))}" target="_blank">4日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'6-5'))}" target="_blank">5日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'6-6'))}" target="_blank">6日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'6-7'))}" target="_blank">7日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'6-8'))}" target="_blank">8日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'6-9'))}" target="_blank">9日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'6-10'))}" target="_blank">10日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'6-11'))}" target="_blank">11日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'6-12'))}" target="_blank">12日</a></td>
+                            </tr>
+                            <tr align="center" bgcolor="#ffffff">
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'6-13'))}" target="_blank">13日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'6-14'))}" target="_blank">14日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'6-15'))}" target="_blank">15日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'6-16'))}" target="_blank">16日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'6-17'))}" target="_blank">17日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'6-18'))}" target="_blank">18日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'6-19'))}" target="_blank">19日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'6-20'))}" target="_blank">20日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'6-21'))}" target="_blank">21日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'6-22'))}" target="_blank">22日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'6-23'))}" target="_blank">23日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'6-24'))}" target="_blank">24日</a></td>
+                            </tr>
+                            <tr align="center" bgcolor="#ffffff">
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'6-25'))}" target="_blank">25日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'6-26'))}" target="_blank">26日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'6-27'))}" target="_blank">27日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'6-28'))}" target="_blank">28日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'6-29'))}" target="_blank">29日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'6-30'))}" target="_blank">30日</a></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </table>
+                            <br> <table width="95%" align="center" cellpadding="2" cellspacing="1" bgcolor="#CCCCCC">
+                            <tr align="center" bgcolor="dddddd">
+                                <td colspan="12"><strong>七月份</strong></td>
+                            </tr>
+                            <tr align="center" bgcolor="#ffffff">
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'7-1'))}" target="_blank">1日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'7-2'))}" target="_blank">2日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'7-3'))}" target="_blank">3日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'7-4'))}" target="_blank">4日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'7-5'))}" target="_blank">5日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'7-6'))}" target="_blank">6日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'7-7'))}" target="_blank">7日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'7-8'))}" target="_blank">8日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'7-9'))}" target="_blank">9日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'7-10'))}" target="_blank">10日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'7-11'))}" target="_blank">11日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'7-12'))}" target="_blank">12日</a></td>
+                            </tr>
+                            <tr align="center" bgcolor="#ffffff">
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'7-13'))}" target="_blank">13日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'7-14'))}" target="_blank">14日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'7-15'))}" target="_blank">15日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'7-16'))}" target="_blank">16日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'7-17'))}" target="_blank">17日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'7-18'))}" target="_blank">18日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'7-19'))}" target="_blank">19日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'7-20'))}" target="_blank">20日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'7-21'))}" target="_blank">21日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'7-22'))}" target="_blank">22日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'7-23'))}" target="_blank">23日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'7-24'))}" target="_blank">24日</a></td>
+                            </tr>
+                            <tr align="center" bgcolor="#ffffff">
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'7-25'))}" target="_blank">25日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'7-26'))}" target="_blank">26日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'7-27'))}" target="_blank">27日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'7-28'))}" target="_blank">28日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'7-29'))}" target="_blank">29日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'7-30'))}" target="_blank">30日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'7-31'))}" target="_blank">31日</a></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </table>
+                            <br> <table width="95%" align="center" cellpadding="2" cellspacing="1" bgcolor="#CCCCCC">
+                            <tr align="center" bgcolor="dddddd">
+                                <td colspan="12"><strong>八月份</strong></td>
+                            </tr>
+                            <tr align="center" bgcolor="#ffffff">
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'8-1'))}" target="_blank">1日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'8-2'))}" target="_blank">2日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'8-3'))}" target="_blank">3日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'8-4'))}" target="_blank">4日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'8-5'))}" target="_blank">5日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'8-6'))}" target="_blank">6日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'8-7'))}" target="_blank">7日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'8-8'))}" target="_blank">8日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'8-9'))}" target="_blank">9日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'8-10'))}" target="_blank">10日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'8-11'))}" target="_blank">11日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'8-12'))}" target="_blank">12日</a></td>
+                            </tr>
+                            <tr align="center" bgcolor="#ffffff">
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'8-13'))}" target="_blank">13日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'8-14'))}" target="_blank">14日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'8-15'))}" target="_blank">15日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'8-16'))}" target="_blank">16日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'8-17'))}" target="_blank">17日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'8-18'))}" target="_blank">18日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'8-19'))}" target="_blank">19日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'8-20'))}" target="_blank">20日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'8-21'))}" target="_blank">21日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'8-22'))}" target="_blank">22日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'8-23'))}" target="_blank">23日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'8-24'))}" target="_blank">24日</a></td>
+                            </tr>
+                            <tr align="center" bgcolor="#ffffff">
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'8-25'))}" target="_blank">25日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'8-26'))}" target="_blank">26日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'8-27'))}" target="_blank">27日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'8-28'))}" target="_blank">28日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'8-29'))}" target="_blank">29日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'8-30'))}" target="_blank">30日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'8-31'))}" target="_blank">31日</a></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </table>
+                            <br>
+                            <table width="95%" align="center" cellpadding="2" cellspacing="1" bgcolor="#CCCCCC">
+                                <tr align="center" bgcolor="dddddd">
+                                    <td colspan="12"><strong>九月份</strong></td>
+                                </tr>
+                                <tr align="center" bgcolor="#ffffff">
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'9-1'))}" target="_blank">1日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'9-2'))}" target="_blank">2日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'9-3'))}" target="_blank">3日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'9-4'))}" target="_blank">4日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'9-5'))}" target="_blank">5日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'9-6'))}" target="_blank">6日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'9-7'))}" target="_blank">7日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'9-8'))}" target="_blank">8日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'9-9'))}" target="_blank">9日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'9-10'))}" target="_blank">10日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'9-11'))}" target="_blank">11日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'9-12'))}" target="_blank">12日</a></td>
+                                </tr>
+                                <tr align="center" bgcolor="#ffffff">
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'9-13'))}" target="_blank">13日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'9-14'))}" target="_blank">14日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'9-15'))}" target="_blank">15日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'9-16'))}" target="_blank">16日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'9-17'))}" target="_blank">17日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'9-18'))}" target="_blank">18日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'9-19'))}" target="_blank">19日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'9-20'))}" target="_blank">20日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'9-21'))}" target="_blank">21日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'9-22'))}" target="_blank">22日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'9-23'))}" target="_blank">23日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'9-24'))}" target="_blank">24日</a></td>
+                                </tr>
+                                <tr align="center" bgcolor="#ffffff">
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'9-25'))}" target="_blank">25日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'9-26'))}" target="_blank">26日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'9-27'))}" target="_blank">27日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'9-28'))}" target="_blank">28日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'9-29'))}" target="_blank">29日</a></td>
+                                    <td><a href="{:U('Index/shengri_result',array('id'=>'9-30'))}" target="_blank">30日</a></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                            <br> <table width="95%" align="center" cellpadding="2" cellspacing="1" bgcolor="#CCCCCC">
+                            <tr align="center" bgcolor="dddddd">
+                                <td colspan="12"><strong>十月份</strong></td>
+                            </tr>
+                            <tr align="center" bgcolor="#ffffff">
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'10-1'))}" target="_blank">1日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'10-2'))}" target="_blank">2日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'10-3'))}" target="_blank">3日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'10-4'))}" target="_blank">4日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'10-5'))}" target="_blank">5日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'10-6'))}" target="_blank">6日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'10-7'))}" target="_blank">7日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'10-8'))}" target="_blank">8日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'10-9'))}" target="_blank">9日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'10-10'))}" target="_blank">10日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'10-11'))}" target="_blank">11日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'10-12'))}" target="_blank">12日</a></td>
+                            </tr>
+                            <tr align="center" bgcolor="#ffffff">
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'10-13'))}" target="_blank">13日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'10-14'))}" target="_blank">14日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'10-15'))}" target="_blank">15日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'10-16'))}" target="_blank">16日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'10-17'))}" target="_blank">17日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'10-18'))}" target="_blank">18日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'10-19'))}" target="_blank">19日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'10-20'))}" target="_blank">20日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'10-21'))}" target="_blank">21日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'10-22'))}" target="_blank">22日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'10-23'))}" target="_blank">23日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'10-24'))}" target="_blank">24日</a></td>
+                            </tr>
+                            <tr align="center" bgcolor="#ffffff">
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'10-25'))}" target="_blank">25日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'10-26'))}" target="_blank">26日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'10-27'))}" target="_blank">27日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'10-28'))}" target="_blank">28日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'10-29'))}" target="_blank">29日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'10-30'))}" target="_blank">30日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'10-31'))}" target="_blank">31日</a></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </table>
+                            <br> <table width="95%" align="center" cellpadding="2" cellspacing="1" bgcolor="#CCCCCC">
+                            <tr align="center" bgcolor="dddddd">
+                                <td colspan="12"><strong>十一月份</strong></td>
+                            </tr>
+                            <tr align="center" bgcolor="#ffffff">
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'11-1'))}" target="_blank">1日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'11-2'))}" target="_blank">2日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'11-3'))}" target="_blank">3日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'11-4'))}" target="_blank">4日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'11-5'))}" target="_blank">5日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'11-6'))}" target="_blank">6日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'11-7'))}" target="_blank">7日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'11-8'))}" target="_blank">8日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'11-9'))}" target="_blank">9日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'11-10'))}" target="_blank">10日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'11-11'))}" target="_blank">11日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'11-12'))}" target="_blank">12日</a></td>
+                            </tr>
+                            <tr align="center" bgcolor="#ffffff">
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'11-13'))}" target="_blank">13日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'11-14'))}" target="_blank">14日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'11-15'))}" target="_blank">15日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'11-16'))}" target="_blank">16日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'11-17'))}" target="_blank">17日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'11-18'))}" target="_blank">18日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'11-19'))}" target="_blank">19日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'11-20'))}" target="_blank">20日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'11-21'))}" target="_blank">21日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'11-22'))}" target="_blank">22日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'11-23'))}" target="_blank">23日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'11-24'))}" target="_blank">24日</a></td>
+                            </tr>
+                            <tr align="center" bgcolor="#ffffff">
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'11-25'))}" target="_blank">25日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'11-26'))}" target="_blank">26日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'11-27'))}" target="_blank">27日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'11-28'))}" target="_blank">28日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'11-29'))}" target="_blank">29日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'11-30'))}" target="_blank">30日</a></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </table>
+                            <br> <table width="95%" align="center" cellpadding="2" cellspacing="1" bgcolor="#CCCCCC">
+                            <tr align="center" bgcolor="dddddd">
+                                <td colspan="12"><strong>十二月份</strong></td>
+                            </tr>
+                            <tr align="center" bgcolor="#ffffff">
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'12-1'))}" target="_blank">1日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'12-2'))}" target="_blank">2日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'12-3'))}" target="_blank">3日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'12-4'))}" target="_blank">4日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'12-5'))}" target="_blank">5日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'12-6'))}" target="_blank">6日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'12-7'))}" target="_blank">7日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'12-8'))}" target="_blank">8日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'12-9'))}" target="_blank">9日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'12-10'))}" target="_blank">10日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'12-11'))}" target="_blank">11日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'12-12'))}" target="_blank">12日</a></td>
+                            </tr>
+                            <tr align="center" bgcolor="#ffffff">
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'12-13'))}" target="_blank">13日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'12-14'))}" target="_blank">14日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'12-15'))}" target="_blank">15日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'12-16'))}" target="_blank">16日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'12-17'))}" target="_blank">17日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'12-18'))}" target="_blank">18日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'12-19'))}" target="_blank">19日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'12-20'))}" target="_blank">20日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'12-21'))}" target="_blank">21日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'12-22'))}" target="_blank">22日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'12-23'))}" target="_blank">23日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'12-24'))}" target="_blank">24日</a></td>
+                            </tr>
+                            <tr align="center" bgcolor="#ffffff">
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'12-25'))}" target="_blank">25日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'12-26'))}" target="_blank">26日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'12-27'))}" target="_blank">27日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'12-28'))}" target="_blank">28日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'12-29'))}" target="_blank">29日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'12-30'))}" target="_blank">30日</a></td>
+                                <td><a href="{:U('Index/shengri_result',array('id'=>'12-31'))}" target="_blank">31日</a></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--引入广告!-->
+        <include file="Public:advertisement"/>
+
+    </div>
+</div>
+
+
+<script>
+    //左标题栏按钮active加深()
+    $("#bazi_shengri").addClass("active")
+</script>
+

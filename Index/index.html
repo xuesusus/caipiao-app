@@ -1,0 +1,257 @@
+<layout name="layout" />
+<div class="container">
+    <!--移动端显导航栏!-->
+    <div class="row row-offcanvas row-offcanvas-right visible-xs-block">
+        <div class="list-group text-center">
+            <div class="panel panel-default">
+                <div class="panel-heading" style="background-color: #96b97d">
+                    <h4 class="panel-title"><span class="glyphicon glyphicon-th-list"></span> 算命精选</h4>
+                </div>
+                <a id="bazi_cesuan" href="{:U('Index/cesuan')}" class="list-group-item left"> 八字测算</a>
+                <a id="bazi_jingsuan" href="{:U('Index/jingsuan')}" class="list-group-item left"> 八字精算</a>
+                <a id="bazi_hehun" href="{:U('Index/hehun')}" class="list-group-item left"> 八字合婚</a>
+                <a id="bazi_paipan" href="{:U('Index/paipan')}" class="list-group-item left"> 八字排盘</a>
+                <a id="bazi_jingpan" href="{:U('Index/jingpan')}" class="list-group-item left"> 八字流盘</a>
+                <a id="bazi_weilai" href="{:U('Index/weilai')}" class="list-group-item left"> 未来运势</a>
+                <a id="bazi_zwpan" href="{:U('Index/zwpan')}" class="list-group-item left"> 紫微排盘</a>
+                <a id="bazi_zwlpan" href="{:U('Index/zwlpan')}" class="list-group-item left"> 紫微流盘</a>
+                <a id="bazi_qimen" href="{:U('Index/qimen')}" class="list-group-item left"> 奇门遁甲</a>
+                <a id="bazi_jinkoujue" href="{:U('Index/jinkoujue')}" class="list-group-item left"> 金口诀</a>
+                <a id="bazi_jiuxing" href="{:U('Index/jiuxing')}" class="list-group-item left"> 九星算命</a>
+                <a id="bazi_shengri" href="{:U('Index/shengri')}" class="list-group-item left"> 生日论命</a>
+                <a id="bazi_guxiang" href="{:U('Index/guxiang')}" class="list-group-item left"> 骨相论命</a>
+                <a id="bazi_chenggu" href="{:U('Index/chenggu')}" class="list-group-item left"> 称骨论命</a>
+                <a id="yuce_liudao" href="{:U('Yuce/liudao')}" class="list-group-item left"> 六道轮回</a>
+                <a id="yuce_yinyuan" href="{:U('Yuce/yinyuan')}" class="list-group-item left"> 姻缘预测</a>
+                <a id="yuce_mingyun" href="{:U('Yuce/mingyun')}" class="list-group-item left"> 命运预测</a>
+                <a id="yuce_caiyun" href="{:U('Yuce/caiyun')}" class="list-group-item left"> 财运预测</a>
+                <a id="yuce_jiehun" href="{:U('Yuce/jiehun')}" class="list-group-item left"> 结婚预测</a>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading" style="background-color: #96b97d">
+                    <h4 class="panel-title"><span class="glyphicon glyphicon-th-list"></span> 大数据算命</h4>
+                </div>
+                <a id="dashuju_mianxiang" href="{:U('Dashuju/mianxiang')}" class="list-group-item left"> 面相分析</a>
+                <a id="dashuju_shouxiang" href="{:U('Dashuju/shouxiang')}" class="list-group-item left"> 手相分析</a>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading" style="background-color: #96b97d">
+                    <h4 class="panel-title"><span class="glyphicon glyphicon-th-list"></span> 测算姓名</h4>
+                </div>
+                <a id="xingming_dafen" href="{:U('xingming/dafen')}" class="list-group-item left"> 姓名打分</a>
+                <a id="gongsi_dafen" href="{:U('xingming/gongsi')}" class="list-group-item left"> 公司名打分</a>
+                <a id="gongsi_qiming" href="{:U('xingming/qiming')}" class="list-group-item left"> 在线起名</a>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading" style="background-color: #96b97d">
+                    <h4 class="panel-title"><span class="glyphicon glyphicon-th-list"></span> 算卦占卜</h4>
+                </div>
+                <a id="yaogua_zhanbu" href="{:U('Zhanbu/index')}" class="list-group-item left"> 摇卦占卜</a>
+                <a id="meiri_zhanbu" href="{:U('Zhanbu/meiri')}" class="list-group-item left"> 每日一占</a>
+                <a id="zhiwen_zhanbu" href="{:U('Zhanbu/zhiwen')}" class="list-group-item left"> 指纹占卜</a>
+                <a id="xiaoliuren_zhanbu" href="{:U('Zhanbu/xiaoliuren')}" class="list-group-item left"> 小六壬占卜</a>
+                <a id="taluo_zhanbu" href="{:U('Zhanbu/taluo')}" class="list-group-item left"> 塔罗牌占卜</a>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading" style="background-color: #96b97d">
+                    <h4 class="panel-title"><span class="glyphicon glyphicon-th-list"></span> 测算吉凶</h4>
+                </div>
+                <a id="jixiong_shuzi" href="{:U('Jixiong/shuzi')}" class="list-group-item left"> 数字测吉凶</a>
+                <a id="jixiong_shouji" href="{:U('Jixiong/shouji')}" class="list-group-item left"> 手机号测吉凶</a>
+                <a id="jixiong_dianhua" href="{:U('Jixiong/dianhua')}" class="list-group-item left"> 电话号测吉凶</a>
+                <a id="jixiong_qq" href="{:U('Jixiong/qq')}" class="list-group-item left"> QQ号测吉凶</a>
+                <a id="jixiong_chepai" href="{:U('Jixiong/chepai')}" class="list-group-item left"> 车牌号测吉凶</a>
+                <a id="jixiong_shenfen" href="{:U('Jixiong/shenfen')}" class="list-group-item left"> 身份证号测吉凶</a>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading" style="background-color: #96b97d">
+                    <h4 class="panel-title"><span class="glyphicon glyphicon-th-list"></span> 在线抽签</h4>
+                </div>
+
+                <a id="lingqian_fozu" href="{:U('Lingqian/fozu')}" class="list-group-item left"> 佛祖灵签</a>
+                <a id="lingqian_guanyin" href="{:U('Lingqian/guanyin')}" class="list-group-item left"> 观音灵签</a>
+                <a id="lingqian_zhuge" href="{:U('Lingqian/zhuge')}" class="list-group-item left"> 诸葛灵签</a>
+                <a id="lingqian_yuelao" href="{:U('Lingqian/yuelao')}" class="list-group-item left"> 月老灵签</a>
+                <a id="lingqian_mazu" href="{:U('Lingqian/mazu')}" class="list-group-item left"> 妈祖灵签</a>
+                <a id="lingqian_lvzu" href="{:U('Lingqian/lvzu')}" class="list-group-item left"> 吕祖灵签</a>
+
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading" style="background-color: #96b97d">
+                    <h4 class="panel-title"><span class="glyphicon glyphicon-th-list"></span> 缘份配对</h4>
+                </div>
+                <a id="peidui_xingming" href="{:U('Peidui/xingming')}" class="list-group-item left"> 姓名配对</a>
+                <a id="peidui_shengri" href="{:U('Peidui/shengri')}" class="list-group-item left"> 生日配对</a> <!--https://www.shen88.cn/bazi/8097.html!-->
+                <a id="peidui_xingzuo" href="{:U('Peidui/xingzuo')}" class="list-group-item left"> 星座配对</a>
+                <a id="peidui_shengxiao" href="{:U('Peidui/shengxiao')}" class="list-group-item left"> 生肖配对</a>
+                <a id="peidui_xuexing" href="{:U('Peidui/xuexing')}" class="list-group-item left"> 血型配对</a>
+                <a id="peidui_qq" href="{:U('Peidui/qq')}" class="list-group-item left"> QQ配对</a>
+                <a id="peidui_shouji" href="{:U('Peidui/shouji')}" class="list-group-item left"> 手机配对</a>
+                <a id="peidui_dianhua" href="{:U('Peidui/dianhua')}" class="list-group-item left"> 电话配对</a>
+                <a id="peidui_shenfen" href="{:U('Peidui/shenfen')}" class="list-group-item left"> 身份证配对</a>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading" style="background-color: #96b97d">
+                    <h4 class="panel-title"><span class="glyphicon glyphicon-th-list"></span> 每日运势</h4>
+                </div>
+                <a id="水瓶座" href="{:U('Public/xingzuo',array('id'=>10))}" class="list-group-item left" target="_self"> 水瓶座 (1.20~2.18)</a>
+                <a id="双鱼座" href="{:U('Public/xingzuo',array('id'=>11))}" class="list-group-item left" target="_self"> 双鱼座 (2.18~3.20)</a>
+                <a id="白羊座" href="{:U('Public/xingzuo',array('id'=>0))}" class="list-group-item left" target="_self"> 白羊座 (3.21~4.19)</a>
+                <a id="金牛座" href="{:U('Public/xingzuo',array('id'=>1))}" class="list-group-item left" target="_self"> 金牛座 (4.20~5.20)</a>
+                <a id="双子座" href="{:U('Public/xingzuo',array('id'=>2))}" class="list-group-item left" target="_self"> 双子座 (5.21~6.21)</a>
+                <a id="巨蟹座" href="{:U('Public/xingzuo',array('id'=>3))}" class="list-group-item left" target="_self"> 巨蟹座 (6.22~7.22)</a>
+                <a id="狮子座" href="{:U('Public/xingzuo',array('id'=>4))}" class="list-group-item left" target="_self"> 狮子座 (7.23~8.22)</a>
+                <a id="处女座" href="{:U('Public/xingzuo',array('id'=>5))}" class="list-group-item left" target="_self"> 处女座 (8.23~9.22)</a>
+                <a id="天秤座" href="{:U('Public/xingzuo',array('id'=>6))}" class="list-group-item left" target="_self"> 天秤座 (9.23~10.23)</a>
+                <a id="天蝎座" href="{:U('Public/xingzuo',array('id'=>7))}" class="list-group-item left" target="_self"> 天蝎座(10.24~11.22)</a>
+                <a id="射手座" href="{:U('Public/xingzuo',array('id'=>8))}" class="list-group-item left" target="_self"> 射手座(11.23~12.21)</a>
+                <a id="摩羯座" href="{:U('Public/xingzuo',array('id'=>9))}" class="list-group-item left" target="_self"> 摩羯座 (12.22~1.19)</a>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading" style="background-color: #96b97d">
+                    <h4 class="panel-title"><span class="glyphicon glyphicon-th-list"></span> 查询工具</h4>
+                </div>
+                <a id="zhuanti_zhougong" href="{:U('Zhuanti/zhougong')}" class="list-group-item left"> 周公解梦</a>
+                <!--<a id="zhuanti_xingzuo" href="{:U('Zhuanti/xingzuo')}" class="list-group-item left"> 星座运势</a>-->
+                <!--<a id="zhuanti_laohuangli" href="{:U('Zhuanti/laohuangli')}" class="list-group-item left"> 老黄历查询</a>-->
+                <a id="zhuanti_tongziming" href="{:U('Zhuanti/tongziming')}" class="list-group-item left"> 童子命查询</a>
+                <a id="zhuanti_zeshi" href="{:U('Zhuanti/zeshi')}" class="list-group-item left"> 择吉日查询</a>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading" style="background-color: #96b97d">
+                    <h4 class="panel-title"><span class="glyphicon glyphicon-th-list"></span> 算命杂谈</h4>
+                </div>
+                <!--<a id="zhuanti_lishi" href="{:U('Zhuanti/lishi')}" class="list-group-item left"> 历史的今天</a>-->
+                <a id="zhuanti_zhuanlan" href="{:U('Zhuanti/index')}" class="list-group-item left"> 专题专栏</a>
+            </div>
+        </div>
+    </div>
+
+    <!--PC端显示导航栏+内容!-->
+    <div class="row row-offcanvas row-offcanvas-right visible-sm-block visible-md-block visible-lg-block">
+        <!--引入左标题栏!-->
+        <include file="Public:left"/>
+
+        <div class="col-xs-12 col-sm-8">
+            <!--八字测算!-->
+            <form class="form-horizontal" method="post" role="form" action="{:U('Index/cesuan_result')}">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><span class="glyphicon glyphicon-edit"></span> 八字测算</h3>
+                    </div>
+                    <div class="panel-body">
+                        <p>测试方法：输入您的信息，点击立即测算，并查看测算结果，请自行体会其中的指示。</p>
+                        <hr>
+                        <div style="text-align:center;">
+                            <br>
+                            <label for="name">缘主姓名：</label>
+                            <input class="yfj-bazi" type="text" name="name" id="name" placeholder="请输入姓名">
+
+                            <input type="radio" name="sex" value="male" id="male" checked>
+                            <label for="male">男性</label>
+                            <input type="radio" name="sex" value="female" id="female">
+                            <label for="female">女性</label>
+
+                            <br>
+                            <br>
+
+                            <label>日期类型：</label>
+                            <input type="radio" name="type" value="gongli" id="gongli" checked>
+                            <label for="gongli">公历</label>
+                            <input type="radio" name="type" value="nongli" id="nongli" >
+                            <label for="nongli">农历</label>
+
+                            <br>
+                            <br>
+                            <label>出生日期：</label>
+                            <select class="yfj-bazi" name="year">
+                                <option>1910</option><option>1911</option><option>1912</option><option>1913</option><option>1914</option><option>1915</option><option>1916</option><option>1917</option><option>1918</option><option>1919</option><option>1920</option><option>1921</option><option>1922</option><option>1923</option><option>1924</option><option>1925</option><option>1926</option><option>1927</option><option>1928</option><option>1929</option><option>1930</option><option>1931</option><option>1932</option><option>1933</option><option>1934</option><option>1935</option><option>1936</option><option>1937</option><option>1938</option><option>1939</option><option>1940</option><option>1941</option><option>1942</option><option>1943</option><option>1944</option><option>1945</option><option>1946</option><option>1947</option><option>1948</option><option>1949</option><option>1950</option><option>1951</option><option>1952</option><option>1953</option><option>1954</option><option>1955</option><option>1956</option><option>1957</option><option>1958</option><option>1959</option><option>1960</option><option>1961</option><option>1962</option><option>1963</option><option>1964</option><option>1965</option><option>1966</option><option>1967</option><option>1968</option><option>1969</option><option>1970</option><option>1971</option><option>1972</option><option>1973</option><option>1974</option><option>1975</option><option>1976</option><option>1977</option><option>1978</option><option>1979</option><option>1980</option><option>1981</option><option>1982</option><option>1983</option><option>1984</option><option>1985</option><option>1986</option><option>1987</option><option>1988</option><option>1989</option><option>1990</option><option>1991</option><option>1992</option><option>1993</option><option>1994</option><option>1995</option><option>1996</option><option>1997</option><option>1998</option><option>1999</option><option>2000</option><option>2001</option><option>2002</option><option>2003</option><option>2004</option><option selected="">2005</option><option>2006</option><option>2007</option><option>2008</option><option>2009</option><option>2010</option><option>2011</option><option>2012</option><option>2013</option><option>2014</option><option>2015</option><option>2016</option><option>2017</option><option>2018</option><option>2019</option><option>2020</option><option>2021</option><option>2022</option><option>2023</option><option>2024</option><option>2025</option><option>2026</option><option>2027</option><option>2028</option><option>2029</option><option>2030</option><option>2031</option><option>2032</option><option>2033</option><option>2034</option><option>2035</option><option>2036</option><option>2037</option><option>2038</option><option>2039</option><option>2040</option><option>2041</option><option>2042</option><option>2043</option><option>2044</option><option>2045</option><option>2046</option><option>2047</option><option>2048</option><option>2049</option><option>2050</option><option>2051</option><option>2052</option><option>2053</option><option>2054</option><option>2055</option><option>2056</option><option>2057</option><option>2058</option><option>2059</option><option>2060</option><option>2061</option><option>2062</option><option>2063</option><option>2064</option><option>2065</option><option>2066</option><option>2067</option><option>2068</option><option>2069</option><option>2070</option><option>2071</option><option>2072</option><option>2073</option><option>2074</option><option>2075</option><option>2076</option><option>2077</option><option>2078</option><option>2079</option><option>2080</option><option>2081</option><option>2082</option><option>2083</option><option>2084</option><option>2085</option><option>2086</option><option>2087</option><option>2088</option><option>2089</option><option>2090</option><option>2091</option><option>2092</option><option>2093</option><option>2094</option><option>2095</option><option>2096</option><option>2097</option><option>2098</option><option>2099</option><option>2100</option>
+                            </select>
+                            年
+                            <select class="yfj-bazi" name="month">
+                                <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option><option>11</option>
+                                <option selected="">12</option>
+                            </select>
+                            月
+                            <select class="yfj-bazi" name="day">
+                                <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option><option>11</option><option>12</option><option>13</option><option>14</option><option>15</option><option>16</option><option>17</option><option>18</option><option>19</option><option>20</option><option>21</option><option>22</option><option selected="">23</option>
+                                <option>24</option><option>25</option><option>26</option><option>27</option><option>28</option><option>29</option><option>30</option><option>31</option>
+                            </select>
+                            日
+                            时辰:
+                            <select class="yfj-bazi" name="hours">
+                                <option value="0">未知</option><option value="0">0-子</option><option value="1">1-丑</option><option value="2">2-丑</option><option value="3">3-寅</option><option value="4">4-寅</option><option value="5">5-卯</option><option value="6">6-卯</option><option value="7">7-辰</option><option value="8" selected="">8-辰</option>
+                                <option value="9">9-巳</option><option value="10">10-巳</option><option value="11">11-午</option><option value="12">12-午</option><option value="13">13-未</option><option value="14">14-未</option><option value="15">15-申</option><option value="16">16-申</option><option value="17">17-酉</option><option value="18">18-酉</option><option value="19">19-戌</option><option value="20">20-戌</option><option value="21">21-亥</option><option value="22">22-亥</option><option value="23">23-子</option>
+                            </select>
+                            时
+                            <select class="yfj-bazi"  name="minute">
+                                <option value="0">未知</option><option>0</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option><option>11</option><option>12</option><option>13</option><option>14</option><option>15</option><option>16</option><option>17</option><option>18</option><option>19</option><option>20</option><option>21</option><option>22</option><option>23</option><option>24</option><option>25</option><option>26</option><option>27</option><option>28</option><option>29</option><option>30</option><option>31</option><option>32</option><option>33</option><option>34</option><option>35</option><option>36</option><option selected="">37</option>
+                                <option>38</option><option>39</option><option>40</option><option>41</option><option>42</option><option>43</option><option>44</option><option>45</option><option>46</option><option>47</option><option>48</option><option>49</option><option>50</option><option>51</option><option>52</option><option>53</option><option>54</option>><option>55</option>><option>56</option>><option>57</option>><option>58</option>><option>59</option>
+                            </select>
+                            分
+                            <br>
+                            <br>
+                            <button type="submit" class="btn btn-success yfj-btn-success">立即测算</button>
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+
+            <!--简介!-->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><span class="glyphicon glyphicon-list"></span> 测算简介</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-xs-12 col-lg-12">
+                            <p>1.缘份居八字算命可查询生辰八字、分析八字五行命理，免费测算八字命运等等，出生日期支持公历和农历测算，测算结果仅供参考。</p>
+                            <p>2.八字，即生辰八字，是一个人出生时的干支历日期。年干和年支组成年柱，月干和月支组成月柱，日干和日支组成日柱，时干和时支组成时柱，一共四柱，四个干和四个支共八个字，故又称四柱八字。是算命方法之中最正统的一种。</p>
+                            <p>3.中国古代一个时辰等于现在的两个小时，比如午时，即现代时间的11时到13时之间。八字算命只需准确到时辰范围（两个小时之间）即可，不必精确到分钟。
+                        </div><!--/.col-xs-6.col-lg-4-->
+                    </div>
+                </div>
+            </div>
+
+            <!--其他展示!-->
+            <div class="panel panel-default">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><span class="glyphicon glyphicon-list"></span> 最新文章
+                            <span class="pull-right">
+                                <a style="color: #333333" href="{:U('Zhuanti/index')}" target="_blank">更多</a>
+                            </span>
+                        </h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-xs-12 col-lg-12">
+                                <ul class="list-group">
+                                    <volist name="new_list" id="vo">
+                                        <a href="{:U('Zhuanti/detail',array('id'=>$vo['doc_id']))}" target="_blank" class="list-group-item">【{$vo.doc_keyword}】 {$vo.doc_title} <span class="pull-right visible-sm-block visible-md-block visible-lg-block"> {$vo.doc_time}</span></a>
+                                    </volist>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!--引入广告!-->
+        <include file="Public:advertisement"/>
+
+    </div>
+</div>
+
