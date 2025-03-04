@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>彩票预测系统</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+            color: #ff0000;
+        }
+        .container {
+            display: flex;
+            gap: 20px;
+        }
+        .column {
+            flex: 1;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h2 {
+            color: #ff0000;
+            margin-top: 0;
+            text-align: center;
+        }
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            background-color: #ff0000;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #cc0000;
+        }
+        .output {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-radius: 4px;
+            min-height: 100px;
+            white-space: pre-wrap;
+            color: #ff0000;
+        }
+        .progress-container {
+            width: 100%;
+            background-color: #ddd;
+            border-radius: 4px;
+            margin-top: 10px;
+            display: none;
+        }
+        .progress-bar {
+            width: 0%;
+            height: 20px;
+            background-color: #4CAF50;
+            border-radius: 4px;
+            text-align: center;
+            line-height: 20px;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="column">
+            <h2>双色球</h2>
+            <button onclick="scrapeSsq()">双色球开奖数据抓取</button>
+            <button onclick="forceScrapeSSQ()">开奖当晚22:00后强制抓取双色球开奖数据</button>
+            <div id="ssq-scrape" class="output">等待数据抓取...</div>
+            <button onclick="predictSsq()">开始双色球预测</button>
+            <div id="ssq-predict" class="output">等待预测结果...</div>
+        </div>
+        <div class="column">
+            <h2>大乐透</h2>
+            <button onclick="scrapeDlt()">大乐透开奖数据抓取</button>
+            <button onclick="forceScrapeDLT()">开奖当晚22:00后强制抓取大乐透开奖数据</button>
+            <div id="dlt-scrape" class="output">等待数据抓取...</div>
+            <button onclick="predictDlt()">开始大乐透预测</button>
+            <div id="dlt-predict" class="output">等待预测结果...</div>
+        </div>
+    </div>
+
+    <script>
+        function updateOutput(elementId, message, success = true) {
+            const element = document.getElementById(elementId);
+            element.textContent = message;
+            element.style.color = success ? '#4CAF50' : '#f44336';
+        }
+
+        async function makeRequest(url, scrapeId) {
+            try {
+                const response = await fetch(url);
+                const data = await response.json();
+                updateOutput(scrapeId, data.message, data.success);
+            } catch (error) {
+                updateOutput(scrapeId, '请求失败：' + error.message, false);
+            }
+        }
+
+        function scrapeSsq() {
+            updateOutput('ssq-scrape', '数据抓取中...');
+            makeRequest('http://xueshanyuan.xueshanxin.com:51818/api/scrape_ssq', 'ssq-scrape');
+        }
+
+        function scrapeDlt() {
+            updateOutput('dlt-scrape', '数据抓取中...');
+            makeRequest('http://xueshanyuan.xueshanxin.com:51818/api/scrape_dlt', 'dlt-scrape');
+        }
+
+        function forceScrapeSSQ() {
+            updateOutput('ssq-scrape', '强制数据抓取中...');
+            makeRequest('http://xueshanxin.xueshanyuan.com:51818/api/force_scrape_ssq', 'ssq-scrape');
+        }
+
+        function forceScrapeDLT() {
+            updateOutput('dlt-scrape', '强制数据抓取中...');
+            makeRequest('http://xueshanxin.xueshanyuan.com:51818/api/force_scrape_dlt', 'dlt-scrape');
+        }
+
+        async function predictSsq() {
+            const outputElement = document.getElementById('ssq-predict');
+            const progressContainer = document.createElement('div');
+            progressContainer.className = 'progress-container';
+            progressContainer.style.display = 'block';
+            
+            const progressBar = document.createElement('div');
+            progressBar.className = 'progress-bar';
+            progressBar.textContent = '0%';
+            
+            progressContainer.appendChild(progressBar);
+            outputElement.textContent = '预测中...';
+            outputElement.appendChild(progressContainer);
+            
+            // 模拟进度条
+            let progress = 0;
+            const interval = setInterval(() => {
+                if (progress >= 100) {
+                    clearInterval(interval);
+                    return;
+                }
+                progress += 1;
+                progressBar.style.width = progress + '%';
+                progressBar.textContent = progress + '%';
+            }, 1000);
+            
+            try {
+                const response = await fetch('http://xueshanyuan.xueshanxin.com:51818/api/predict_ssq');
+                const data = await response.json();
+                clearInterval(interval);
+                progressBar.style.width = '100%';
+                progressBar.textContent = '100%';
+                
+                // 只显示特定部分的输出
+                if (data.success) {
+                    const fullOutput = data.message;
+                    const startMarker = '                            ';
+                    const startIndex = fullOutput.indexOf(startMarker);
+                    
+                    if (startIndex !== -1) {
+                        const filteredOutput = fullOutput.substring(startIndex);
+                        outputElement.innerHTML = filteredOutput;
+                    } else {
+                        outputElement.textContent = data.message;
+                    }
+                } else {
+                    outputElement.textContent = data.message;
+                    outputElement.style.color = '#f44336';
+                }
+                
+                // 移除进度条
+                setTimeout(() => {
+                    progressContainer.remove();
+                }, 1000);
+                
+            } catch (error) {
+                clearInterval(interval);
+                outputElement.textContent = '请求失败：' + error.message;
+                outputElement.style.color = '#f44336';
+                progressContainer.remove();
+            }
+        }
+
+        async function predictDlt() {
+            const outputElement = document.getElementById('dlt-predict');
+            const progressContainer = document.createElement('div');
+            progressContainer.className = 'progress-container';
+            progressContainer.style.display = 'block';
+            
+            const progressBar = document.createElement('div');
+            progressBar.className = 'progress-bar';
+            progressBar.textContent = '0%';
+            
+            progressContainer.appendChild(progressBar);
+            outputElement.textContent = '预测中...';
+            outputElement.appendChild(progressContainer);
+            
+            // 模拟进度条
+            let progress = 0;
+            const interval = setInterval(() => {
+                if (progress >= 100) {
+                    clearInterval(interval);
+                    return;
+                }
+                progress += 1;
+                progressBar.style.width = progress + '%';
+                progressBar.textContent = progress + '%';
+            }, 1000);
+            
+            try {
+                const response = await fetch('http://xueshanyuan.xueshanxin.com:51818/api/predict_dlt');
+                const data = await response.json();
+                clearInterval(interval);
+                progressBar.style.width = '100%';
+                progressBar.textContent = '100%';
+                
+                // 只显示特定部分的输出
+                if (data.success) {
+                    const fullOutput = data.message;
+                    const startMarker = '                            ';
+                    const startIndex = fullOutput.indexOf(startMarker);
+                    
+                    if (startIndex !== -1) {
+                        const filteredOutput = fullOutput.substring(startIndex);
+                        outputElement.innerHTML = filteredOutput;
+                    } else {
+                        outputElement.textContent = data.message;
+                    }
+                } else {
+                    outputElement.textContent = data.message;
+                    outputElement.style.color = '#f44336';
+                }
+                
+                // 移除进度条
+                setTimeout(() => {
+                    progressContainer.remove();
+                }, 1000);
+                
+            } catch (error) {
+                clearInterval(interval);
+                outputElement.textContent = '请求失败：' + error.message;
+                outputElement.style.color = '#f44336';
+                progressContainer.remove();
+            }
+        }
+    </script>
+</body>
+</html>
