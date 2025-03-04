@@ -14,8 +14,14 @@ async function handleRequest(request) {
   }
 
   // 提供index.html
-  const html = await fetch('templates/index.html')
-  return new Response(html.body, {
+  const html = await fetch('https://raw.githubusercontent.com/xuesusus/91baipiao/refs/heads/main/templates/index.html')
+  if (!html.ok) {
+    return new Response('Failed to fetch index.html', {
+      status: 500,
+      headers: { 'Content-Type': 'text/plain' }
+    })
+  }
+  return new Response(await html.text(), {
     headers: { 'Content-Type': 'text/html' }
   })
 }
