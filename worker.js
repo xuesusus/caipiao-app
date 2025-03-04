@@ -14,7 +14,7 @@ async function handleRequest(request) {
   }
 
   // 提供index.html
-  const html = await fetch('https://raw.githubusercontent.com/xuesusus/91baipiao/main/templates/index.html')  
+  const html = await fetch('https://raw.githubusercontent.com/xuesusus/91baipiao/main/templates/index.html')
   if (!html.ok) {
     return new Response('Failed to fetch index.html', {
       status: 500,
