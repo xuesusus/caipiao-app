@@ -1,6 +1,6 @@
 name = "caipiao-app"
 type = "webpack"
-account_id = "your-account-id"
+account_id = "5a66f1472706ab4252f1b2082df3cb56"  
 workers_dev = true
 route = ""
 zone_id = ""
