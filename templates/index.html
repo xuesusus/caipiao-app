@@ -110,22 +110,22 @@
 
         function scrapeSsq() {
             updateOutput('ssq-scrape', '数据抓取中...');
-            makeRequest('http://xueshanyuan.xueshanxin.com:51818/api/scrape_ssq', 'ssq-scrape');
+            makeRequest('/api/scrape_ssq', 'ssq-scrape');
         }
 
         function scrapeDlt() {
             updateOutput('dlt-scrape', '数据抓取中...');
-            makeRequest('http://xueshanyuan.xueshanxin.com:51818/api/scrape_dlt', 'dlt-scrape');
+            makeRequest('/api/scrape_dlt', 'dlt-scrape');
         }
 
         function forceScrapeSSQ() {
             updateOutput('ssq-scrape', '强制数据抓取中...');
-            makeRequest('http://xueshanyuan.xueshanxin.com:51818/api/force_scrape_ssq', 'ssq-scrape');
+            makeRequest('/api/force_scrape_ssq', 'ssq-scrape');
         }
 
         function forceScrapeDLT() {
             updateOutput('dlt-scrape', '强制数据抓取中...');
-            makeRequest('http://xueshanyuan.xueshanxin.com:51818/api/force_scrape_dlt', 'dlt-scrape');
+            makeRequest('/api/force_scrape_dlt', 'dlt-scrape');
         }
 
         async function predictSsq() {
@@ -155,7 +155,7 @@
             }, 1000);
             
             try {
-                const response = await fetch('http://xueshanyuan.xueshanxin.com:51818/api/predict_ssq');
+                const response = await fetch('/api/predict_ssq');
                 const data = await response.json();
                 clearInterval(interval);
                 progressBar.style.width = '100%';
@@ -218,7 +218,7 @@
             }, 1000);
             
             try {
-                const response = await fetch('http://xueshanyuan.xueshanxin.com:51818/api/predict_dlt');
+                const response = await fetch('/api/predict_dlt');
                 const data = await response.json();
                 clearInterval(interval);
                 progressBar.style.width = '100%';
